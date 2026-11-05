@@ -1,0 +1,64 @@
+#!/bin/sh
+# ag-run: run grader commands inside WSL as the unprivileged user agrun.
+# Installed to /usr/local/bin/ag-run by wsl_setup.sh and called as root:
+#   wsl.exe -d Ubuntu -u root -e /usr/local/bin/ag-run <op> ...
+#   ag-run check
+#   ag-run init <id>             create /tmp/ag-<id> owned by agrun
+#   ag-run write <id> <name>     stdin -> /tmp/ag-<id>/<name>
+#   ag-run sh <id> <base64>      run the decoded script in /tmp/ag-<id>
+#   ag-run destroy <id>
+# The caller already wraps student programs in timeout -s KILL + prlimit.
+set -u
+RUN_USER=agrun
+VERSION="ag-run 1"
+
+die() { echo "ag-run: $*" >&2; exit 125; }
+
+[ "$(id -u)" = 0 ] || die "must be started as root"
+op=${1:-}
+[ -n "$op" ] || die "usage: ag-run check|init|write|sh|destroy ..."
+
+if [ "$op" = check ]; then
+  id "$RUN_USER" >/dev/null 2>&1 || die "user $RUN_USER missing"
+  echo "$VERSION"
+  exit 0
+fi
+
+id=${2:-}
+case "$id" in
+  ''|*[!A-Za-z0-9-]*) die "bad sandbox id" ;;
+esac
+dir=/tmp/ag-$id
+
+case "$op" in
+  init)
+    mkdir -m 700 "$dir" || die "cannot create $dir"
+    chown "$RUN_USER:$RUN_USER" "$dir"
+    ;;
+  write)
+    name=${3:-}
+    case "$name" in
+      ''|*[!A-Za-z0-9_.-]*|.|..) die "illegal file name" ;;
+    esac
+    [ -d "$dir" ] || die "no such sandbox"
+    cat > "$dir/$name" || die "write failed"
+    chown "$RUN_USER:$RUN_USER" "$dir/$name"
+    ;;
+  sh)
+    [ -d "$dir" ] || die "no such sandbox"
+    script=$(printf %s "${3:-}" | base64 -d) || die "bad script encoding"
+    # new net/pid/mount namespaces; the inner sh is pid 1, so kill -9 -1 only
+    # reaches what the student program left behind in this namespace
+    exec unshare --net --pid --fork --mount-proc -- \
+      prlimit --nproc=256 -- \
+      setpriv --reuid="$RUN_USER" --regid="$RUN_USER" --clear-groups --no-new-privs -- \
+      env -i PATH=/usr/local/bin:/usr/bin:/bin HOME="$dir" LANG=C.UTF-8 \
+      sh -c 'cd "$1" || exit 125; eval "$2"; rc=$?; kill -9 -1 2>/dev/null; exit $rc' ag-run "$dir" "$script"
+    ;;
+  destroy)
+    rm -rf "$dir"
+    ;;
+  *)
+    die "unknown op $op"
+    ;;
+esac

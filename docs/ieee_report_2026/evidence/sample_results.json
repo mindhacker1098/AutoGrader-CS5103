@@ -1,0 +1,321 @@
+[
+  {
+    "problem": "add_two_integers",
+    "file": "add.c",
+    "grade": 86.3,
+    "metrics": [
+      {
+        "name": "correctness",
+        "score": 0.8,
+        "contribution": 16.0,
+        "status": "ok"
+      },
+      {
+        "name": "syntax",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "structure",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "modularity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "logical",
+        "score": 0.533,
+        "contribution": 5.3,
+        "status": "ok"
+      },
+      {
+        "name": "complexity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "memory_safety",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "readability",
+        "score": 0.5,
+        "contribution": 5.0,
+        "status": "ok"
+      },
+      {
+        "name": "originality",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      }
+    ],
+    "flags": [
+      "possible_copy_low_confidence"
+    ]
+  },
+  {
+    "problem": "add_two_integers",
+    "file": "add_crash.c",
+    "grade": 47.0,
+    "metrics": [
+      {
+        "name": "correctness",
+        "score": 0.0,
+        "contribution": 0.0,
+        "status": "ok"
+      },
+      {
+        "name": "syntax",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "structure",
+        "score": 0.7,
+        "contribution": 7.0,
+        "status": "ok"
+      },
+      {
+        "name": "modularity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "logical",
+        "score": 0.0,
+        "contribution": 0.0,
+        "status": "ok"
+      },
+      {
+        "name": "complexity",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "ok"
+      },
+      {
+        "name": "memory_safety",
+        "score": 0.0,
+        "contribution": 0.0,
+        "status": "ok"
+      },
+      {
+        "name": "readability",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "originality",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      }
+    ],
+    "flags": []
+  },
+  {
+    "problem": "add_two_integers",
+    "file": "add_good.c",
+    "grade": 90.0,
+    "metrics": [
+      {
+        "name": "correctness",
+        "score": 1.0,
+        "contribution": 20.0,
+        "status": "ok"
+      },
+      {
+        "name": "syntax",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "structure",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "modularity",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "logical",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "complexity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "memory_safety",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "readability",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "originality",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "ok"
+      }
+    ],
+    "flags": [
+      "suspected_copy_peer"
+    ]
+  },
+  {
+    "problem": "add_two_integers",
+    "file": "add_infinite_loop.c",
+    "grade": 47.0,
+    "metrics": [
+      {
+        "name": "correctness",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "skipped"
+      },
+      {
+        "name": "syntax",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "structure",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "modularity",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "logical",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "skipped"
+      },
+      {
+        "name": "complexity",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "skipped"
+      },
+      {
+        "name": "memory_safety",
+        "score": 0,
+        "contribution": 0.0,
+        "status": "skipped"
+      },
+      {
+        "name": "readability",
+        "score": 0.7,
+        "contribution": 7.0,
+        "status": "ok"
+      },
+      {
+        "name": "originality",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      }
+    ],
+    "flags": [
+      "suspected_infinite_loop"
+    ]
+  },
+  {
+    "problem": "add_two_integers",
+    "file": "add_injection.c",
+    "grade": 83.3,
+    "metrics": [
+      {
+        "name": "correctness",
+        "score": 0.8,
+        "contribution": 16.0,
+        "status": "ok"
+      },
+      {
+        "name": "syntax",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "structure",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "modularity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "logical",
+        "score": 0.533,
+        "contribution": 5.3,
+        "status": "ok"
+      },
+      {
+        "name": "complexity",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "memory_safety",
+        "score": 1.0,
+        "contribution": 10.0,
+        "status": "ok"
+      },
+      {
+        "name": "readability",
+        "score": 0.2,
+        "contribution": 2.0,
+        "status": "ok"
+      },
+      {
+        "name": "originality",
+        "score": 1,
+        "contribution": 10.0,
+        "status": "ok"
+      }
+    ],
+    "flags": [
+      "prompt_injection_attempt",
+      "possible_copy_low_confidence"
+    ]
+  }
+]

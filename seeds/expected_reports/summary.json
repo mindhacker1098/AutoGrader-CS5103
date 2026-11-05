@@ -1,0 +1,92 @@
+[
+  {
+    "problem": "add_two_integers",
+    "submission": "add.c",
+    "grade": 82.3,
+    "flags": "possible_copy_low_confidence"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_crash.c",
+    "grade": 37,
+    "flags": ""
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_good.c",
+    "grade": 99,
+    "flags": "possible_copy_low_confidence"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_infinite_loop.c",
+    "grade": 47,
+    "flags": "suspected_infinite_loop"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_injection.c",
+    "grade": 80.3,
+    "flags": "prompt_injection_attempt,possible_copy_low_confidence"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_leak.c",
+    "grade": 94,
+    "flags": ""
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_peer_copy.c",
+    "grade": 98,
+    "flags": "possible_copy_low_confidence"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_web_copy.c",
+    "grade": 88,
+    "flags": "suspected_copy_web"
+  },
+  {
+    "problem": "add_two_integers",
+    "submission": "add_whitespace.c",
+    "grade": 96,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_bubble.c",
+    "grade": 89,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_cmp_overflow.c",
+    "grade": 88.5,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_fixed_array.c",
+    "grade": 71.3,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_good.c",
+    "grade": 99,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_heap_overflow.c",
+    "grade": 81,
+    "flags": ""
+  },
+  {
+    "problem": "sort_integers",
+    "submission": "sort_leak.c",
+    "grade": 95,
+    "flags": ""
+  }
+]

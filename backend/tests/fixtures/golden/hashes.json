@@ -1,0 +1,64 @@
+{
+ "add_two_integers": {
+  "canonical_json": "{\"feedback\":{\"llm_tutor_note\":true},\"input_spec\":{\"generator\":\"two_ints\"},\"memory_limit_mb\":64,\"metrics\":[{\"analyzer\":\"io_tests\",\"name\":\"correctness\",\"params\":{\"testset_dir\":\"tests/\"},\"weight\":0.2},{\"analyzer\":\"compiler_warnings\",\"name\":\"syntax\",\"params\":{\"flags\":\"-Wall -Wextra -Werror -std=c11\"},\"weight\":0.1},{\"analyzer\":\"static_analysis\",\"name\":\"structure\",\"params\":{\"max_cyclomatic\":8,\"max_function_length\":40},\"weight\":0.1},{\"analyzer\":\"function_split\",\"name\":\"modularity\",\"params\":{\"expect_helpers\":true,\"min_functions\":2},\"weight\":0.1},{\"analyzer\":\"edge_case_runner\",\"name\":\"logical\",\"params\":{\"cases\":[\"negatives\",\"zero\",\"int_overflow\"],\"random_trials\":100,\"seed\":7},\"weight\":0.1},{\"analyzer\":\"complexity_estimator\",\"name\":\"complexity\",\"params\":{\"required\":\"O(1)\",\"sizes\":[1,10,100]},\"weight\":0.1},{\"analyzer\":\"sanitizer_run\",\"name\":\"memory_safety\",\"params\":{\"flags\":\"-fsanitize=address,undefined\"},\"weight\":0.1},{\"analyzer\":\"llm_review\",\"name\":\"readability\",\"params\":{\"model\":\"qwen2.5-coder:7b\",\"provider\":\"ollama\",\"seed\":42,\"temperature\":0},\"weight\":0.1},{\"analyzer\":\"similarity_flag\",\"name\":\"originality\",\"params\":{\"corpus_dir\":\"submissions/\",\"flag_threshold\":0.85},\"weight\":0.1}],\"problem\":\"add_two_integers\",\"reference_solution\":\"reference.c\",\"sample_input\":\"sample.in\",\"time_limit_s\":1}",
+  "rules_hash": "sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce",
+  "inputs_hash": "sha256:81bbe67f879487ec57d93845571352f98eeeee89a73ce27df91eda2ae4482be4",
+  "path_sep": "\\"
+ },
+ "sort_integers": {
+  "canonical_json": "{\"feedback\":{\"llm_tutor_note\":true},\"input_spec\":{\"generator\":\"int_array\",\"max_n\":40,\"max_val\":2147483647,\"min_n\":0,\"min_val\":-2147483648},\"memory_limit_mb\":64,\"metrics\":[{\"analyzer\":\"io_tests\",\"name\":\"correctness\",\"params\":{\"testset_dir\":\"tests/\"},\"weight\":0.25},{\"analyzer\":\"compiler_warnings\",\"name\":\"syntax\",\"params\":{\"flags\":\"-Wall -Wextra -std=c11\",\"penalty_per_warning\":0.2},\"weight\":0.05},{\"analyzer\":\"static_analysis\",\"name\":\"structure\",\"params\":{\"max_cyclomatic\":10,\"max_function_length\":40,\"max_nesting\":3},\"weight\":0.1},{\"analyzer\":\"function_split\",\"name\":\"modularity\",\"params\":{\"expect_helpers\":true,\"min_functions\":3},\"weight\":0.1},{\"analyzer\":\"edge_case_runner\",\"name\":\"logical\",\"params\":{\"cases\":[\"empty\",\"single\",\"duplicates\",\"negatives\",\"large_values\",\"reverse\"],\"random_trials\":100,\"seed\":11},\"weight\":0.15},{\"analyzer\":\"complexity_estimator\",\"name\":\"complexity\",\"params\":{\"required\":\"O(n log n)\",\"sizes\":[500,1000,2000,4000,8000]},\"weight\":0.15},{\"analyzer\":\"sanitizer_run\",\"name\":\"memory_safety\",\"params\":{\"flags\":\"-fsanitize=address,undefined\"},\"weight\":0.1},{\"analyzer\":\"llm_review\",\"name\":\"readability\",\"params\":{\"model\":\"qwen2.5-coder:7b\",\"provider\":\"ollama\",\"seed\":42,\"temperature\":0},\"weight\":0.05},{\"analyzer\":\"similarity_flag\",\"name\":\"originality\",\"params\":{\"corpus_dir\":\"submissions/\",\"flag_threshold\":0.85},\"weight\":0.05}],\"problem\":\"sort_integers\",\"reference_solution\":\"reference.c\",\"sample_input\":\"sample.in\",\"time_limit_s\":1}",
+  "rules_hash": "sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3",
+  "inputs_hash": "sha256:c48be1bf2dd2d344b54196909676e4ffc0b2235eac47a3ccdbea9b9c6064836d",
+  "path_sep": "\\"
+ },
+ "_sha256": [
+  {
+   "input": "",
+   "hex": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "input": "abc",
+   "hex": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+  },
+  {
+   "input": "café",
+   "hex": "850f7dc43910ff890f8879c0ed26fe697c93a067ad93a7d50f466a7028a9bf4e"
+  },
+  {
+   "input": "int main(void) { return 0; }\r\n",
+   "hex": "c1252d25811797e4231ce5c5d8df9c9e74e7c68e615332f79be594d09d23776a"
+  }
+ ],
+ "_canonical": [
+  {
+   "value": {
+    "a": 1,
+    "b": [
+     1,
+     2.5,
+     {
+      "z": null,
+      "y": true
+     }
+    ],
+    "A": "x",
+    "é": 0.30000000000000004,
+    "_": 0,
+    "big": 1e+21,
+    "small": 1e-7
+   },
+   "canonical": "{\"A\":\"x\",\"_\":0,\"a\":1,\"b\":[1,2.5,{\"y\":true,\"z\":null}],\"big\":1e+21,\"small\":1e-7,\"é\":0.30000000000000004}"
+  },
+  {
+   "value": [
+    {
+     "b": 1,
+     "a": 2
+    },
+    "s\"q\\\n\u0001",
+    3
+   ],
+   "canonical": "[{\"a\":2,\"b\":1},\"s\\\"q\\\\\\n\\u0001\",3]"
+  }
+ ]
+}

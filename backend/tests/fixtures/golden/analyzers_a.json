@@ -1,0 +1,289 @@
+{
+ "cw_warn_werror": {
+  "result": {
+   "score": 0.6,
+   "evidence": {
+    "flags": "-Wall -Wextra -Werror -std=c11",
+    "warnings": 4,
+    "warning_kinds": [
+     "-Wunused-variable",
+     "-Wimplicit-function-declaration"
+    ],
+    "would_fail_with_Werror": true,
+    "diagnostics": [
+     "line 3:7: warning: unused variable 'x' [-Wunused-variable]",
+     "line 4:3: warning: implicit declaration of function 'foo' [-Wimplicit-function-declaration]",
+     "line 5:9: warning: unused variable 'y' [-Wunused-variable]",
+     "line 6:1: warning: no newline at end"
+    ]
+   },
+   "feedback": "4 warning(s) under -Wall -Wextra  -std=c11 (the build would fail with -Werror): -Wunused-variable, -Wimplicit-function-declaration.",
+   "suggestions": [
+    "Fix the compiler warnings (-Wunused-variable, -Wimplicit-function-declaration); they often point at real bugs."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -Wextra -std=c11 -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "cw_warn_penalty": {
+  "result": {
+   "score": 0,
+   "evidence": {
+    "flags": "-Wall\t-Werror",
+    "warnings": 4,
+    "warning_kinds": [
+     "-Wunused-variable",
+     "-Wimplicit-function-declaration"
+    ],
+    "would_fail_with_Werror": true,
+    "diagnostics": [
+     "line 3:7: warning: unused variable 'x' [-Wunused-variable]",
+     "line 4:3: warning: implicit declaration of function 'foo' [-Wimplicit-function-declaration]",
+     "line 5:9: warning: unused variable 'y' [-Wunused-variable]",
+     "line 6:1: warning: no newline at end"
+    ]
+   },
+   "feedback": "4 warning(s) under -Wall (the build would fail with -Werror): -Wunused-variable, -Wimplicit-function-declaration.",
+   "suggestions": [
+    "Fix the compiler warnings (-Wunused-variable, -Wimplicit-function-declaration); they often point at real bugs."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "cw_warn_nokinds": {
+  "result": {
+   "score": 0.9,
+   "evidence": {
+    "flags": "-Wall -Wextra -std=c11",
+    "warnings": 1,
+    "warning_kinds": [],
+    "would_fail_with_Werror": false,
+    "diagnostics": [
+     "line 6:1: warning: no newline"
+    ]
+   },
+   "feedback": "1 warning(s) under -Wall -Wextra -std=c11: see diagnostics.",
+   "suggestions": [
+    "Fix the compiler warnings (see diagnostics); they often point at real bugs."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -Wextra -std=c11 -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "cw_error": {
+  "result": {
+   "score": 0,
+   "evidence": {
+    "flags": "-Werror -Wall",
+    "errors": 1,
+    "warnings": 1,
+    "diagnostics": [
+     "line 2:10: error: 'x' undeclared (first use in this function)",
+     "line 3:1: warning: control reaches end [-Wreturn-type]"
+    ]
+   },
+   "feedback": "Compilation fails with 1 error(s). First: line 2:10: error: 'x' undeclared (first use in this function)",
+   "suggestions": [
+    "Fix the compiler errors first; nothing else can be graded properly until the program builds."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "cw_error_nomsg": {
+  "result": {
+   "score": 0,
+   "evidence": {
+    "flags": "-Wall -Wextra -std=c11",
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": []
+   },
+   "feedback": "Compilation fails with 0 error(s). First: see diagnostics",
+   "suggestions": [
+    "Fix the compiler errors first; nothing else can be graded properly until the program builds."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -Wextra -std=c11 -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "cw_clean": {
+  "result": {
+   "score": 1,
+   "evidence": {
+    "flags": "-Wall -Wextra -std=c11",
+    "warnings": 0,
+    "warning_kinds": [],
+    "would_fail_with_Werror": false,
+    "diagnostics": []
+   },
+   "feedback": "Clean build under -Wall -Wextra -std=c11.",
+   "suggestions": []
+  },
+  "calls": [
+   [
+    "write",
+    "warn.c"
+   ],
+   [
+    "sh",
+    "gcc -Wall -Wextra -std=c11 -O2 -c -o warn warn.c  2>&1"
+   ]
+  ]
+ },
+ "sa_cpp": {
+  "result": {
+   "score": 0.05,
+   "evidence": {
+    "thresholds": {
+     "max_cyclomatic": 3,
+     "max_function_length": 2,
+     "max_nesting": 2.5
+    },
+    "functions": [
+     {
+      "name": "f",
+      "lines": 4,
+      "cyclomatic": 9,
+      "nesting": 5
+     },
+     {
+      "name": "main",
+      "lines": 1,
+      "cyclomatic": 1,
+      "nesting": 0
+     }
+    ],
+    "cppcheck": [
+     {
+      "line": 3,
+      "severity": "error",
+      "id": "nullPointer",
+      "message": "Null pointer dereference: p"
+     },
+     {
+      "line": 4,
+      "severity": "style",
+      "id": "unusedVariable",
+      "message": "Unused variable: q"
+     },
+     {
+      "line": 7,
+      "severity": "warning",
+      "id": "uninitvar",
+      "message": "a|b|c"
+     },
+     {
+      "line": 12,
+      "severity": "portability",
+      "message": ""
+     },
+     {
+      "line": 9,
+      "severity": "warning",
+      "message": ""
+     }
+    ],
+    "issues": [
+     "f(): cyclomatic complexity 9 > 3",
+     "f(): 4 lines > 2",
+     "f(): nesting depth 5 > 2.5",
+     "line 3: cppcheck error (nullPointer) Null pointer dereference: p",
+     "line 7: cppcheck warning (uninitvar) a|b|c",
+     "line 9: cppcheck warning (undefined) "
+    ]
+   },
+   "feedback": "6 structural issue(s): f(): cyclomatic complexity 9 > 3; f(): 4 lines > 2.",
+   "suggestions": [
+    "Break long or deeply branched functions into smaller helpers, and fix the cppcheck findings listed in the report."
+   ]
+  },
+  "calls": [
+   [
+    "write",
+    "cc.c"
+   ],
+   [
+    "sh",
+    "cppcheck --enable=warning,style,performance,portability --std=c11 --quiet --inline-suppr --template='{line}|{severity}|{id}|{message}' cc.c 2>&1"
+   ]
+  ]
+ },
+ "sa_nosb": {
+  "result": {
+   "score": 0.85,
+   "evidence": {
+    "thresholds": {
+     "max_cyclomatic": 10,
+     "max_function_length": 50,
+     "max_nesting": 4
+    },
+    "functions": [
+     {
+      "name": "f",
+      "lines": 4,
+      "cyclomatic": 9,
+      "nesting": 5
+     },
+     {
+      "name": "main",
+      "lines": 1,
+      "cyclomatic": 1,
+      "nesting": 0
+     }
+    ],
+    "cppcheck": [],
+    "issues": [
+     "f(): nesting depth 5 > 4"
+    ]
+   },
+   "feedback": "1 structural issue(s): f(): nesting depth 5 > 4.",
+   "suggestions": [
+    "Break long or deeply branched functions into smaller helpers, and fix the cppcheck findings listed in the report."
+   ]
+  },
+  "calls": []
+ },
+ "src": "int f(int a){\n  if(a){ if(a>1){ if(a>2){ if(a>3){ if(a>4){ return 1; } } } } }\n  return a && a || a ? 1 : 0;\n}\nint main(void){ return f(1); }\n"
+}

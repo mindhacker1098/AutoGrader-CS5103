@@ -1,0 +1,509 @@
+{
+  "summary": {
+    "n": 30,
+    "completed": 2,
+    "errors": [
+      {
+        "roll": "A001",
+        "problem": "add_two_integers",
+        "file": "add.c",
+        "submit_status": 201,
+        "t_submit": 0.3,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/71/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A002",
+        "problem": "add_two_integers",
+        "file": "add_crash.c",
+        "submit_status": 201,
+        "t_submit": 0.3,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/72/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A003",
+        "problem": "add_two_integers",
+        "file": "add_good.c",
+        "submit_status": 201,
+        "t_submit": 0.17,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A004",
+        "problem": "add_two_integers",
+        "file": "add_infinite_loop.c",
+        "submit_status": 201,
+        "t_submit": 0.31,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/73/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A005",
+        "problem": "add_two_integers",
+        "file": "add_injection.c",
+        "submit_status": 201,
+        "t_submit": 0.31,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/74/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A006",
+        "problem": "add_two_integers",
+        "file": "add_leak.c",
+        "submit_status": 201,
+        "t_submit": 0.28,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/64/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A008",
+        "problem": "add_two_integers",
+        "file": "add_web_copy.c",
+        "submit_status": 201,
+        "t_submit": 0.1,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A009",
+        "problem": "add_two_integers",
+        "file": "add_whitespace.c",
+        "submit_status": 201,
+        "t_submit": 0.33,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/75/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A010",
+        "problem": "sort_integers",
+        "file": "sort_bubble.c",
+        "submit_status": 201,
+        "t_submit": 0.28,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/67/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A011",
+        "problem": "sort_integers",
+        "file": "sort_cmp_overflow.c",
+        "submit_status": 201,
+        "t_submit": 0.07,
+        "t_first_event": 0.37,
+        "t_running": 0.37,
+        "status": "running",
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A012",
+        "problem": "sort_integers",
+        "file": "sort_fixed_array.c",
+        "submit_status": 201,
+        "t_submit": 0.22,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/59/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A013",
+        "problem": "sort_integers",
+        "file": "sort_good.c",
+        "submit_status": 201,
+        "t_submit": 0.17,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A014",
+        "problem": "sort_integers",
+        "file": "sort_heap_overflow.c",
+        "submit_status": 201,
+        "t_submit": 0.19,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A015",
+        "problem": "sort_integers",
+        "file": "sort_leak.c",
+        "submit_status": 201,
+        "t_submit": 0.3,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/70/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A017",
+        "problem": "add_two_integers",
+        "file": "add_crash.c",
+        "submit_status": 201,
+        "t_submit": 0.22,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A018",
+        "problem": "add_two_integers",
+        "file": "add_good.c",
+        "submit_status": 201,
+        "t_submit": 0.1,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A019",
+        "problem": "add_two_integers",
+        "file": "add_infinite_loop.c",
+        "submit_status": 201,
+        "t_submit": 0.21,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A020",
+        "problem": "add_two_integers",
+        "file": "add_injection.c",
+        "submit_status": 201,
+        "t_submit": 0.21,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A021",
+        "problem": "add_two_integers",
+        "file": "add_leak.c",
+        "submit_status": 201,
+        "t_submit": 0.28,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/69/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A022",
+        "problem": "add_two_integers",
+        "file": "add_peer_copy.c",
+        "submit_status": 201,
+        "t_submit": 0.26,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/65/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A023",
+        "problem": "add_two_integers",
+        "file": "add_web_copy.c",
+        "submit_status": 201,
+        "t_submit": 0.19,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A024",
+        "problem": "add_two_integers",
+        "file": "add_whitespace.c",
+        "submit_status": 201,
+        "t_submit": 0.17,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A025",
+        "problem": "sort_integers",
+        "file": "sort_bubble.c",
+        "submit_status": 201,
+        "t_submit": 0.17,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A026",
+        "problem": "sort_integers",
+        "file": "sort_cmp_overflow.c",
+        "submit_status": 201,
+        "t_submit": 0.28,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/68/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A027",
+        "problem": "sort_integers",
+        "file": "sort_fixed_array.c",
+        "submit_status": 201,
+        "t_submit": 0.16,
+        "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/52/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+      },
+      {
+        "roll": "A028",
+        "problem": "sort_integers",
+        "file": "sort_good.c",
+        "submit_status": 201,
+        "t_submit": 0.18,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A029",
+        "problem": "sort_integers",
+        "file": "sort_heap_overflow.c",
+        "submit_status": 201,
+        "t_submit": 0.17,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      },
+      {
+        "roll": "A030",
+        "problem": "sort_integers",
+        "file": "sort_leak.c",
+        "submit_status": 201,
+        "t_submit": 0.16,
+        "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+      }
+    ],
+    "wall_s": 150.9,
+    "throughput_per_min": 0.8,
+    "latency_s": {
+      "p50": 67.85,
+      "p90": 150.88,
+      "max": 150.88,
+      "mean": 109.4
+    },
+    "queue_wait_s": {
+      "p50": 44.35,
+      "p90": 123.11,
+      "max": 123.11
+    },
+    "login_429_total": 0,
+    "queue_after": {
+      "queued": 9,
+      "running": 6,
+      "done": 102,
+      "failed": 0,
+      "cancelled": 0
+    }
+  },
+  "students": [
+    {
+      "roll": "A001",
+      "problem": "add_two_integers",
+      "file": "add.c",
+      "submit_status": 201,
+      "t_submit": 0.3,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/71/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A002",
+      "problem": "add_two_integers",
+      "file": "add_crash.c",
+      "submit_status": 201,
+      "t_submit": 0.3,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/72/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A003",
+      "problem": "add_two_integers",
+      "file": "add_good.c",
+      "submit_status": 201,
+      "t_submit": 0.17,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A004",
+      "problem": "add_two_integers",
+      "file": "add_infinite_loop.c",
+      "submit_status": 201,
+      "t_submit": 0.31,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/73/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A005",
+      "problem": "add_two_integers",
+      "file": "add_injection.c",
+      "submit_status": 201,
+      "t_submit": 0.31,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/74/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A006",
+      "problem": "add_two_integers",
+      "file": "add_leak.c",
+      "submit_status": 201,
+      "t_submit": 0.28,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/64/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A007",
+      "problem": "add_two_integers",
+      "file": "add_peer_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.29,
+      "t_first_event": 31.2,
+      "status": "done",
+      "t_running": 123.11,
+      "grade": 97.0,
+      "t_done": 150.88
+    },
+    {
+      "roll": "A008",
+      "problem": "add_two_integers",
+      "file": "add_web_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.1,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A009",
+      "problem": "add_two_integers",
+      "file": "add_whitespace.c",
+      "submit_status": 201,
+      "t_submit": 0.33,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/75/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A010",
+      "problem": "sort_integers",
+      "file": "sort_bubble.c",
+      "submit_status": 201,
+      "t_submit": 0.28,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/67/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A011",
+      "problem": "sort_integers",
+      "file": "sort_cmp_overflow.c",
+      "submit_status": 201,
+      "t_submit": 0.07,
+      "t_first_event": 0.37,
+      "t_running": 0.37,
+      "status": "running",
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A012",
+      "problem": "sort_integers",
+      "file": "sort_fixed_array.c",
+      "submit_status": 201,
+      "t_submit": 0.22,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/59/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A013",
+      "problem": "sort_integers",
+      "file": "sort_good.c",
+      "submit_status": 201,
+      "t_submit": 0.17,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A014",
+      "problem": "sort_integers",
+      "file": "sort_heap_overflow.c",
+      "submit_status": 201,
+      "t_submit": 0.19,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A015",
+      "problem": "sort_integers",
+      "file": "sort_leak.c",
+      "submit_status": 201,
+      "t_submit": 0.3,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/70/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A016",
+      "problem": "add_two_integers",
+      "file": "add.c",
+      "submit_status": 201,
+      "t_submit": 0.19,
+      "t_first_event": 31.2,
+      "status": "done",
+      "t_running": 44.35,
+      "grade": 81.3,
+      "t_done": 67.85
+    },
+    {
+      "roll": "A017",
+      "problem": "add_two_integers",
+      "file": "add_crash.c",
+      "submit_status": 201,
+      "t_submit": 0.22,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A018",
+      "problem": "add_two_integers",
+      "file": "add_good.c",
+      "submit_status": 201,
+      "t_submit": 0.1,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A019",
+      "problem": "add_two_integers",
+      "file": "add_infinite_loop.c",
+      "submit_status": 201,
+      "t_submit": 0.21,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A020",
+      "problem": "add_two_integers",
+      "file": "add_injection.c",
+      "submit_status": 201,
+      "t_submit": 0.21,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A021",
+      "problem": "add_two_integers",
+      "file": "add_leak.c",
+      "submit_status": 201,
+      "t_submit": 0.28,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/69/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A022",
+      "problem": "add_two_integers",
+      "file": "add_peer_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.26,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/65/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A023",
+      "problem": "add_two_integers",
+      "file": "add_web_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.19,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A024",
+      "problem": "add_two_integers",
+      "file": "add_whitespace.c",
+      "submit_status": 201,
+      "t_submit": 0.17,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A025",
+      "problem": "sort_integers",
+      "file": "sort_bubble.c",
+      "submit_status": 201,
+      "t_submit": 0.17,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A026",
+      "problem": "sort_integers",
+      "file": "sort_cmp_overflow.c",
+      "submit_status": 201,
+      "t_submit": 0.28,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/68/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A027",
+      "problem": "sort_integers",
+      "file": "sort_fixed_array.c",
+      "submit_status": 201,
+      "t_submit": 0.16,
+      "error": "HTTPStatusError: Server error '500 Internal Server Error' for url 'http://127.0.0.1:8010/api/jobs/52/events'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/500"
+    },
+    {
+      "roll": "A028",
+      "problem": "sort_integers",
+      "file": "sort_good.c",
+      "submit_status": 201,
+      "t_submit": 0.18,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A029",
+      "problem": "sort_integers",
+      "file": "sort_heap_overflow.c",
+      "submit_status": 201,
+      "t_submit": 0.17,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    },
+    {
+      "roll": "A030",
+      "problem": "sort_integers",
+      "file": "sort_leak.c",
+      "submit_status": 201,
+      "t_submit": 0.16,
+      "error": "RemoteProtocolError: peer closed connection without sending complete message body (incomplete chunked read)"
+    }
+  ]
+}

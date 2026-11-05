@@ -1,0 +1,96 @@
+===== Grading report for sort_good.c =====
+Problem: sort_integers
+Overall grade: 99.0 / 100
+
+Metric         Weight Score     Contrib. Verdict
+correctness    25     25/25     25.0     All 10 hidden tests pass.
+syntax         5      5/5       5.0      Clean build under -Wall -Wextra -std=c11.
+structure      10     10/10     10.0     Functions are within the complexity, length and nesting limits; cppcheck found no defects.
+modularity     10     10/10     10.0     4 functions; main() delegates to merge, merge_sort, print_values.
+logical        15     15/15     15.0     6/6 edge-case categories pass; random testing: 0/100 trials disagree with the reference.
+complexity     15     15/15     15.0     O(n) measured; meets the required O(n log n).
+memory_safety  10     10/10     10.0     ASan and valgrind clean on 15 inputs.
+readability    5      4/5       4.0      Readability 8/10: Variable names are meaningful and descriptive.; Comments explain the purpose of the code.; Layout is clean with proper spacing around operators and consistent indentation..
+originality    5      5/5       5.0      Max similarity 0.2 (peer:sort_leak.c), below the 0.85 threshold.
+
+--- Suggestions to raise the grade ---
+- Readability: Variable names are meaningful and descriptive..
+- Readability: Comments explain the purpose of the code..
+- Readability: Layout is clean with proper spacing around operators and consistent indentation..
+- Readability: The code is structured into named steps with clear separation of concerns..
+
+--- Tutor note (written by ollama/qwen2.5-coder:7b; checked against the evidence, does not affect the grade) ---
+Your C program received a grade of 99. Your code is clean, readable, and
+                  passes all hidden tests. Keep up the good work!
+
+--- Usefulness & limitations of this evaluation ---
+Useful for:
+  1. Grading a large lab course unattended
+     Example: A CS5103 lab with 150 students submits sort.c. `npm run grade:all`
+              grades every file in one run, with the same rules, the same tests
+              and the same seeds, and writes one JSON and one text report per
+              student. TAs only open the reports carrying a flag.
+     Benefit: Hours of manual running and checking become minutes, and two
+              students with the same mistake always lose the same marks.
+  2. Instant feedback before the deadline
+     Example: A student uploads add.c in the web UI and is told: input
+              "2147483647 1", expected 2147483648, got -2147483648, because the
+              sanitizer reports signed integer overflow; use long long. They fix
+              it before the real submission.
+     Benefit: The student gets a concrete failing input and the reason, not just
+              'wrong answer', which is how people actually learn to debug.
+  3. Coding-interview and hiring screens
+     Example: A company gives 500 candidates the 'sort integers' task. The agent
+              ranks them by correctness, edge cases (empty input,
+              INT_MIN/INT_MAX), measured complexity and memory safety, with a
+              per-metric explanation for every score.
+     Benefit: Fast first-round filtering where every rejection can be justified
+              metric by metric.
+  4. Plagiarism and LLM-copy triage
+     Example: Two submissions reach 0.93 similarity (threshold 0.85) after
+              variables were renamed, and a third matches a solution in the LLM
+              corpus. The instructor reviews those three files instead of all
+              300.
+     Benefit: Manual checking is limited to suspicious cases, and renaming or
+              reformatting does not hide copying.
+Limits of this report:
+  1. Tests cannot prove correctness
+     Example: A program contains `if (a == 123457 && b == -9) puts("0"); else
+              printf("%lld\n", (long long)a + b);`. No hidden test, edge case or
+              random trial happens to use exactly that pair, so the agent
+              reports full correctness for a program that is wrong on one input.
+     Fix: More trials and generators that target the program's own constants
+          (read from the source) would raise the chance of hitting such
+          branches, but testing can only show the presence of bugs, never
+          their absence.
+  2. Measured complexity depends on the inputs generated
+     Example: A quicksort that always picks the first element as pivot is O(n
+              log n) on the random arrays used for measurement, so the estimator
+              reports O(n log n) and full marks, although it is O(n^2) on
+              already-sorted input.
+     Fix: Measure on several input shapes (sorted, reverse, all equal) and
+          grade the worst; the cost is longer grading time.
+  3. Similarity is unreliable for very short programs and for restyled LLM code
+     Example: Two students independently write the same 6-line add.c. Once the
+              boilerplate shared with the reference is removed, too few
+              fingerprints are left, so the agent reports 'low confidence, not
+              flagged': a genuine copy of a short program would also be missed.
+              A student who takes an LLM solution and restructures the loops
+              evades the LLM corpus.
+     Fix: Treat originality as a triage flag for a human, never as proof;
+          enlarge the LLM corpus with several models and prompts.
+  4. Readability depends on the model, and output checking is literal
+     Example: With qwen2.5-coder the agent gives a file 7/10; the same file
+              under another model or Ollama version may get 6/10 (the cache
+              keeps one machine reproducible, not two different setups).
+              Separately, a program that prints "Sum = 12" instead of "12" is
+              computed correctly but fails every test.
+     Fix: Pin the model and its version in the rules and ship the LLM cache
+          with the grades; state the exact output format in the problem
+          statement.
+
+--- Reproducibility ---
+submission sha256:f482d557c0caf8f80c2c1b90ad02470bf575a0f772309d6a0e7b42bb1969b003
+rules      sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3
+tests/ref  sha256:c48be1bf2dd2d344b54196909676e4ffc0b2235eac47a3ccdbea9b9c6064836d
+tools      sandbox=docker; gcc=gcc (Debian 12.2.0-14+deb12u1) 12.2.0; valgrind=valgrind-3.19.0; cppcheck=Cppcheck 2.10

@@ -1,0 +1,552 @@
+{
+  "submission": "sort_leak.c",
+  "problem": "sort_integers",
+  "submission_hash": "sha256:769e8073cd1b64bae26b6d5e1827bc1471d283cc4c09541bfe1dea425d9a47d7",
+  "rules_hash": "sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3",
+  "inputs_hash": "sha256v2:f4b1ed51da9ed90d202faa282ac9b2e9a2b0a4d99a5ddecb0f147bbd3d02fb43",
+  "grade": 96.5,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": true,
+    "smoke_status": "ok",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.25,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 25,
+      "evidence": {
+        "tests_passed": 10,
+        "tests_total": 10,
+        "failing": [],
+        "max_ms": 32
+      },
+      "feedback": "All 10 hidden tests pass.",
+      "duration_ms": 3576
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 5,
+      "evidence": {
+        "flags": "-Wall -Wextra -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -std=c11.",
+      "duration_ms": 2248
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 10,
+          "max_function_length": 40,
+          "max_nesting": 3
+        },
+        "functions": [
+          {
+            "name": "by_value",
+            "lines": 4,
+            "cyclomatic": 1,
+            "nesting": 0
+          },
+          {
+            "name": "read_values",
+            "lines": 8,
+            "cyclomatic": 5,
+            "nesting": 1
+          },
+          {
+            "name": "write_values",
+            "lines": 4,
+            "cyclomatic": 3,
+            "nesting": 0
+          },
+          {
+            "name": "main",
+            "lines": 9,
+            "cyclomatic": 4,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 2063
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 4,
+        "expected_min": 3,
+        "helpers_used_by_main": [
+          "by_value",
+          "read_values",
+          "write_values"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 9
+      },
+      "feedback": "4 functions; main() delegates to by_value, read_values, write_values.",
+      "duration_ms": 1
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 15,
+      "evidence": {
+        "categories": {
+          "empty": {
+            "passed": 1,
+            "total": 1
+          },
+          "single": {
+            "passed": 1,
+            "total": 1
+          },
+          "duplicates": {
+            "passed": 1,
+            "total": 1
+          },
+          "negatives": {
+            "passed": 1,
+            "total": 1
+          },
+          "large_values": {
+            "passed": 1,
+            "total": 1
+          },
+          "reverse": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "failing": [],
+        "random": {
+          "trials": 100,
+          "seed": 11,
+          "failures": 0,
+          "counterexamples": []
+        }
+      },
+      "feedback": "6/6 edge-case categories pass; random testing: 0/100 trials disagree with the reference.",
+      "duration_ms": 16743
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 15,
+      "evidence": {
+        "required": "O(n log n)",
+        "measured": "O(n)",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 500,
+            "instructions": 1019562
+          },
+          {
+            "n": 1000,
+            "instructions": 1952037
+          },
+          {
+            "n": 2000,
+            "instructions": 3843492
+          },
+          {
+            "n": 4000,
+            "instructions": 7685663
+          },
+          {
+            "n": 8000,
+            "instructions": 15484210
+          }
+        ],
+        "fits": [
+          {
+            "class": "O(log n)",
+            "relative_error": 0.321
+          },
+          {
+            "class": "O(n)",
+            "relative_error": 0.006
+          },
+          {
+            "class": "O(n log n)",
+            "relative_error": 0.023
+          },
+          {
+            "class": "O(n^2)",
+            "relative_error": 0.192
+          },
+          {
+            "class": "O(n^3)",
+            "relative_error": 0.29
+          }
+        ],
+        "profile_hot_functions": [
+          {
+            "function": "__vfscanf_internal",
+            "share": 0.304,
+            "user_code": false
+          },
+          {
+            "function": "__vfprintf_internal",
+            "share": 0.171,
+            "user_code": false
+          },
+          {
+            "function": "637",
+            "share": 0.123,
+            "user_code": false
+          },
+          {
+            "function": "608",
+            "share": 0.103,
+            "user_code": false
+          },
+          {
+            "function": "668",
+            "share": 0.049,
+            "user_code": false
+          }
+        ],
+        "worst_shape": "normal",
+        "shape_results": [
+          {
+            "shape": "normal",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 1019562
+              },
+              {
+                "n": 1000,
+                "instructions": 1952037
+              },
+              {
+                "n": 2000,
+                "instructions": 3843492
+              },
+              {
+                "n": 4000,
+                "instructions": 7685663
+              },
+              {
+                "n": 8000,
+                "instructions": 15484210
+              }
+            ]
+          },
+          {
+            "shape": "sorted",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 974698
+              },
+              {
+                "n": 1000,
+                "instructions": 1850091
+              },
+              {
+                "n": 2000,
+                "instructions": 3614389
+              },
+              {
+                "n": 4000,
+                "instructions": 7168163
+              },
+              {
+                "n": 8000,
+                "instructions": 14331187
+              }
+            ]
+          },
+          {
+            "shape": "reverse",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 984933
+              },
+              {
+                "n": 1000,
+                "instructions": 1870460
+              },
+              {
+                "n": 2000,
+                "instructions": 3654948
+              },
+              {
+                "n": 4000,
+                "instructions": 7263294
+              },
+              {
+                "n": 8000,
+                "instructions": 14549567
+              }
+            ]
+          },
+          {
+            "shape": "equal",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 805925
+              },
+              {
+                "n": 1000,
+                "instructions": 1511314
+              },
+              {
+                "n": 2000,
+                "instructions": 2934694
+              },
+              {
+                "n": 4000,
+                "instructions": 5807200
+              },
+              {
+                "n": 8000,
+                "instructions": 11617425
+              }
+            ]
+          }
+        ]
+      },
+      "feedback": "O(n) measured; meets the required O(n log n). Worst result across normal, sorted, reverse, equal inputs; this is an empirical estimate.",
+      "duration_ms": 26935
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "informational": false,
+      "contribution": 7,
+      "evidence": {
+        "inputs_checked": 15,
+        "valgrind": true,
+        "issues": [
+          {
+            "tool": "valgrind",
+            "kind": "memory-leak",
+            "bytes": 20,
+            "input": "5\n3 1 2 5 4",
+            "where": "read_values() line 13"
+          }
+        ],
+        "undefined_behaviour_notes": []
+      },
+      "feedback": "Memory issues: memory-leak at read_values() line 13.",
+      "duration_ms": 20082
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 0.9,
+      "informational": false,
+      "contribution": 4.5,
+      "evidence": {
+        "method": "heuristic (model unavailable)",
+        "heuristic": {
+          "score": 9,
+          "reasons": [
+            "some single-letter names (a)"
+          ]
+        },
+        "error": "LLM calls are disabled (LLM_DISABLED); unverified historical cache entries are not used"
+      },
+      "feedback": "Readability 9/10 (heuristic): some single-letter names (a).",
+      "duration_ms": 2
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 5,
+      "evidence": {
+        "comparison_count": 7,
+        "source_counts": {
+          "peer": 5,
+          "web": 1,
+          "llm": 1
+        },
+        "threshold": 0.85,
+        "distinctive_fingerprints": 43,
+        "ignored_boilerplate_fingerprints": 50,
+        "top_matches": [
+          {
+            "id": "peer:sort_heap_overflow.c",
+            "kind": "peer",
+            "similarity": 0.703,
+            "fingerprints": 37
+          },
+          {
+            "id": "peer:sort_fixed_array.c",
+            "kind": "peer",
+            "similarity": 0.556,
+            "fingerprints": 18
+          },
+          {
+            "id": "peer:sort_cmp_overflow.c",
+            "kind": "peer",
+            "similarity": 0.308,
+            "fingerprints": 13
+          },
+          {
+            "id": "peer:sort_good.c",
+            "kind": "peer",
+            "similarity": 0.256,
+            "fingerprints": 73
+          },
+          {
+            "id": "peer:sort_bubble.c",
+            "kind": "peer",
+            "similarity": 0.116,
+            "fingerprints": 46
+          }
+        ],
+        "confidence": "normal",
+        "assessment": "compared"
+      },
+      "feedback": "Compared with 7 source(s). Max similarity 0.703 (peer:sort_heap_overflow.c), below the 0.85 threshold. This comparison does not prove originality.",
+      "duration_ms": 53
+    }
+  ],
+  "flags": [],
+  "counterexamples": [],
+  "suggestions": [
+    "Free every block you malloc() (valgrind found 32 bytes definitely lost).",
+    "Readability: some single-letter names (a)."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "Students submit C programs through the web UI. The worker evaluates each against the published rules and tests and stores reports for admin review.",
+        "benefit": "Automates repeated execution and collects evidence; throughput depends on the available tools and machine."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The admin reviews those three files instead of all 300.",
+        "benefit": "Helps prioritize human review. Similarity neither proves copying nor establishes AI authorship."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "An algorithm can behave well on the normal, sorted, reverse and equal-value samples yet be slow on a different adversarial arrangement or at larger sizes.",
+        "mitigation": "The array estimator takes the worst observed shape. Review the selected sizes; empirical measurements do not prove a worst-case complexity bound."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability rules are heuristic, and output checking is literal",
+        "example": "A fixed rubric can penalize a concise program for missing comments even if a teacher finds it clear. Printing \"Sum = 12\" instead of the specified \"12\" also fails an output test.",
+        "mitigation": "Inspect the rubric and use admin overrides when justified. AI advice never changes the readability score. State the exact output format in the question."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "corpus_hash": "sha256:4f0029d3938a6e1063397a95e52586234f5929f99eae55b203ed9dda4b31111a",
+  "model_digests": null,
+  "pre_analysis": {
+    "denylist": [],
+    "sandbox": "docker",
+    "policy": "flag",
+    "blocked": false,
+    "llm": null,
+    "verified": null,
+    "complexity": null
+  },
+  "provisional": true,
+  "environment": {
+    "sandbox": "docker",
+    "valgrind": true,
+    "llm_review": "heuristic (model unavailable)"
+  },
+  "provisional_reasons": [
+    "readability: the model was unavailable, heuristic used"
+  ]
+}

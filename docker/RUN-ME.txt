@@ -1,0 +1,63 @@
+AutoGrader improved - portable Docker bundle (Linux x86-64)
+
+Requirements: Docker with Linux containers and Docker Compose v2.
+Python, Node.js, WSL tooling, GCC and Codacy do not need separate installation.
+Docker Desktop supplies Compose on Windows. On Linux, your user must be able
+to access Docker. This bundle targets ordinary Intel/AMD lab computers.
+
+WINDOWS
+1. Extract the ZIP completely; do not run the launcher inside the ZIP.
+2. Start Docker Desktop (Linux containers).
+3. Double-click Start-AutoGrader.cmd.
+4. Open http://127.0.0.1:8020.
+5. The launcher prints the first Admin account and random password.
+   Change the password at first login. Existing accounts are preserved.
+
+LINUX
+1. Extract the ZIP and open a terminal in its autograder-lab folder.
+2. Run: bash start-autograder.sh
+3. Open http://127.0.0.1:8020.
+
+MANUAL COMMANDS (Windows PowerShell or Linux terminal, in this folder)
+docker load -i autograder-images.tar
+docker compose up -d --wait --wait-timeout 120
+docker compose logs --tail 60
+
+DAILY USE
+Start:     docker compose up -d
+Stop:      docker compose stop
+Logs:      docker compose logs -f
+Password:  docker compose exec app python -m autograder.cli reset-password ADMIN
+Another port: create .env beside compose.yaml with AUTOGRADER_PORT=8021.
+
+DATA
+This is a fresh installation: personal accounts, submissions, JWT secrets,
+API keys and the source computer's database are not included in the image.
+Accounts, questions, submissions and caches persist in the Docker named volume
+autograder-improved_autograder-data when you stop or recreate the container.
+Do not use 'docker compose down -v' unless you intend to erase that data.
+On restart, an existing Admin and all existing passwords are kept.
+
+The API and worker are in one application image. Submitted C programs run in
+separate restricted sandbox containers. The Docker socket is mounted so the
+worker can create those containers; run this on a computer you administer.
+The UI is accessible only from this computer by default.
+
+AI FEEDBACK (OPTIONAL)
+Core grading and bundled local Codacy work without internet after image import.
+Ollama advice is off by default. To enable it using Docker only:
+1. Create .env beside compose.yaml containing: LLM_DISABLED=false
+2. Run: docker compose --profile ai up -d
+3. Run: docker compose exec ollama ollama pull qwen2.5-coder:7b
+4. Retry feedback from a submission report.
+The first AI setup downloads the Ollama image and a multi-GB model. CPU-only
+AI can be slow; sufficient free RAM is needed. The model persists in its own
+Docker volume. Ollama/model files are not included in the portable ZIP.
+
+If port 8020 is busy, choose another AUTOGRADER_PORT in .env. The Windows
+launcher prints the default URL; use your configured port instead.
+If startup fails, run 'docker compose logs --tail 100'.
+
+This package changes installation, not grading policy. The previously reported
+grading/reference-isolation and private-report issues are not fixed by Docker
+packaging. See the source review before using it for assessed student work.

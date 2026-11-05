@@ -1,0 +1,26 @@
+\begin{table*}[!t]
+\caption{Agent output on the 15 sample submissions (local model on). Corr.\ = hidden tests,
+Mem.\ = memory safety, Orig.\ = originality; scores are 0--1, grade out of 100.}\label{tab:res}
+\centering\footnotesize
+\begin{tabular}{@{}llrrrrl@{}}
+\toprule
+Submission & Defect built in & Corr. & Mem. & Orig. & Grade & Flags \\
+\midrule
+\code{add} & all in main, overflow & 0.8 & 1.0 & 1 & \textbf{89.3} & low-conf.\ copy \\
+\code{add\_crash} & scanf into NULL pointers & 0.0 & 0.0 & 1 & \textbf{44} & -- \\
+\code{add\_good} & correct, careful & 1.0 & 1.0 & 0 & \textbf{89} & copy (peer) \\
+\code{add\_infinite\_loop} & never halts & 0.0 & 0.0 & 1 & \textbf{47} & infinite loop \\
+\code{add\_injection} & asks grader for full marks & 0.8 & 1.0 & 1 & \textbf{83.3} & injection, low-conf.\ copy \\
+\code{add\_leak} & leaks heap memory & 1.0 & 0.7 & 1 & \textbf{94} & -- \\
+\code{add\_peer\_copy} & add\_good renamed & 1.0 & 1.0 & 0 & \textbf{88} & copy (peer) \\
+\code{add\_web\_copy} & copied forum code & 1.0 & 1.0 & 0 & \textbf{88} & copy (web) \\
+\code{add\_whitespace} & fails on odd spacing & 0.9 & 1.0 & 1 & \textbf{96} & -- \\
+\code{sort\_bubble} & $O(n^2)$ bubble sort & 0.9 & 1.0 & 1 & \textbf{89} & -- \\
+\code{sort\_cmp\_overflow} & comparator overflows & 0.8 & 1.0 & 1 & \textbf{88.5} & -- \\
+\code{sort\_fixed\_array} & array of 1000, assumes $n\le 1000$ & 0.9 & 0.5 & 1 & \textbf{71.3} & -- \\
+\code{sort\_good} & correct merge sort & 1.0 & 1.0 & 1 & \textbf{99} & -- \\
+\code{sort\_heap\_overflow} & writes past buffer & 0.9 & 0.0 & 1 & \textbf{81} & -- \\
+\code{sort\_leak} & leaks heap memory & 1.0 & 0.7 & 1 & \textbf{95} & -- \\
+\bottomrule
+\end{tabular}
+\end{table*}

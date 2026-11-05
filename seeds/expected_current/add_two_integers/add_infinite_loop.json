@@ -1,0 +1,304 @@
+{
+  "submission": "add_infinite_loop.c",
+  "problem": "add_two_integers",
+  "submission_hash": "sha256:a3ebaf5187139c9274640a2fa7556fee94cf7595ba38c41f1810e2654f9df3e9",
+  "rules_hash": "sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce",
+  "inputs_hash": "sha256v2:60c6522b20f4eef9298ff9d14d6891fd153da0f7c90ae66de34a4f22cc750d95",
+  "grade": 47,
+  "partial": true,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": false,
+    "smoke_status": "time limit exceeded (killed)",
+    "suspected_infinite_loop": true,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.2,
+      "status": "skipped",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "flags": "-Wall -Wextra -Werror -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -Werror -std=c11.",
+      "duration_ms": 1438
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 8,
+          "max_function_length": 40,
+          "max_nesting": 4
+        },
+        "functions": [
+          {
+            "name": "add_by_counting",
+            "lines": 8,
+            "cyclomatic": 2,
+            "nesting": 1
+          },
+          {
+            "name": "main",
+            "lines": 6,
+            "cyclomatic": 1,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1407
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 2,
+        "expected_min": 2,
+        "helpers_used_by_main": [
+          "add_by_counting"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 6
+      },
+      "feedback": "2 functions; main() delegates to add_by_counting.",
+      "duration_ms": 0
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "informational": false,
+      "contribution": 7,
+      "evidence": {
+        "method": "heuristic (model unavailable)",
+        "heuristic": {
+          "score": 7,
+          "reasons": [
+            "most variable names are single letters (a, b)"
+          ]
+        },
+        "error": "LLM calls are disabled (LLM_DISABLED); unverified historical cache entries are not used"
+      },
+      "feedback": "Readability 7/10 (heuristic): most variable names are single letters (a, b).",
+      "duration_ms": 1
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "comparison_count": 13,
+        "source_counts": {
+          "peer": 8,
+          "web": 2,
+          "llm": 3
+        },
+        "threshold": 0.85,
+        "distinctive_fingerprints": 21,
+        "ignored_boilerplate_fingerprints": 8,
+        "top_matches": [
+          {
+            "id": "peer:add_injection.c",
+            "kind": "peer",
+            "similarity": 0.625,
+            "fingerprints": 8
+          },
+          {
+            "id": "peer:add.c",
+            "kind": "peer",
+            "similarity": 0.625,
+            "fingerprints": 8
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1001.c",
+            "kind": "llm",
+            "similarity": 0.444,
+            "fingerprints": 9
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1003.c",
+            "kind": "llm",
+            "similarity": 0.444,
+            "fingerprints": 9
+          },
+          {
+            "id": "peer:add_crash.c",
+            "kind": "peer",
+            "similarity": 0.273,
+            "fingerprints": 11
+          }
+        ],
+        "confidence": "normal",
+        "assessment": "compared"
+      },
+      "feedback": "Compared with 13 source(s). Max similarity 0.625 (peer:add_injection.c), below the 0.85 threshold. This comparison does not prove originality.",
+      "duration_ms": 33
+    }
+  ],
+  "flags": [
+    {
+      "type": "suspected_infinite_loop",
+      "detail": "sample input did not finish within 1s"
+    }
+  ],
+  "counterexamples": [],
+  "suggestions": [
+    "Readability: most variable names are single letters (a, b)."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "Students submit C programs through the web UI. The worker evaluates each against the published rules and tests and stores reports for admin review.",
+        "benefit": "Automates repeated execution and collects evidence; throughput depends on the available tools and machine."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The admin reviews those three files instead of all 300.",
+        "benefit": "Helps prioritize human review. Similarity neither proves copying nor establishes AI authorship."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "An algorithm can behave well on the normal, sorted, reverse and equal-value samples yet be slow on a different adversarial arrangement or at larger sizes.",
+        "mitigation": "The array estimator takes the worst observed shape. Review the selected sizes; empirical measurements do not prove a worst-case complexity bound."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability rules are heuristic, and output checking is literal",
+        "example": "A fixed rubric can penalize a concise program for missing comments even if a teacher finds it clear. Printing \"Sum = 12\" instead of the specified \"12\" also fails an output test.",
+        "mitigation": "Inspect the rubric and use admin overrides when justified. AI advice never changes the readability score. State the exact output format in the question."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "corpus_hash": "sha256:40f3b1195c4eb2905b5573b0d64da7d56b09acc84419ac6e0b400f6d95a34658",
+  "model_digests": null,
+  "pre_analysis": {
+    "denylist": [],
+    "sandbox": "docker",
+    "policy": "flag",
+    "blocked": false,
+    "llm": null,
+    "verified": null,
+    "complexity": null
+  },
+  "provisional": true,
+  "environment": {
+    "sandbox": "docker",
+    "valgrind": true,
+    "llm_review": "heuristic (model unavailable)"
+  },
+  "provisional_reasons": [
+    "readability: the model was unavailable, heuristic used"
+  ]
+}

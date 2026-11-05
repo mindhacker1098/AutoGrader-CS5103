@@ -1,0 +1,358 @@
+{
+  "submission": "add_leak.c",
+  "problem": "add_two_integers",
+  "submission_hash": "sha256:cf82a2408807836ff37d5635b69c1a3e3eeaa24b08389a26ab6c10b9c05f5bc5",
+  "rules_hash": "sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce",
+  "inputs_hash": "sha256:81bbe67f879487ec57d93845571352f98eeeee89a73ce27df91eda2ae4482be4",
+  "grade": 94,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": true,
+    "smoke_status": "ok",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.2,
+      "status": "ok",
+      "score": 1,
+      "contribution": 20,
+      "evidence": {
+        "tests_passed": 10,
+        "tests_total": 10,
+        "failing": [],
+        "max_ms": 15
+      },
+      "feedback": "All 10 hidden tests pass.",
+      "duration_ms": 2702
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "flags": "-Wall -Wextra -Werror -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -Werror -std=c11.",
+      "duration_ms": 1884
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 8,
+          "max_function_length": 40,
+          "max_nesting": 4
+        },
+        "functions": [
+          {
+            "name": "read_pair",
+            "lines": 11,
+            "cyclomatic": 3,
+            "nesting": 1
+          },
+          {
+            "name": "main",
+            "lines": 9,
+            "cyclomatic": 2,
+            "nesting": 1
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1848
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 2,
+        "expected_min": 2,
+        "helpers_used_by_main": [
+          "read_pair"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 9
+      },
+      "feedback": "2 functions; main() delegates to read_pair.",
+      "duration_ms": 27
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "categories": {
+          "negatives": {
+            "passed": 2,
+            "total": 2
+          },
+          "zero": {
+            "passed": 2,
+            "total": 2
+          },
+          "int_overflow": {
+            "passed": 2,
+            "total": 2
+          }
+        },
+        "failing": [],
+        "random": {
+          "trials": 100,
+          "seed": 7,
+          "failures": 0,
+          "counterexamples": []
+        }
+      },
+      "feedback": "3/3 edge-case categories pass; random testing: 0/100 trials disagree with the reference.",
+      "duration_ms": 8575
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "required": "O(1)",
+        "measured": "O(1)",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 1,
+            "instructions": 113100
+          },
+          {
+            "n": 10,
+            "instructions": 113100
+          },
+          {
+            "n": 100,
+            "instructions": 113100
+          }
+        ],
+        "fits": [],
+        "profile_hot_functions": [
+          {
+            "function": "_dl_relocate_object",
+            "share": 0.206,
+            "user_code": false
+          },
+          {
+            "function": "do_lookup_x",
+            "share": 0.197,
+            "user_code": false
+          },
+          {
+            "function": "290",
+            "share": 0.143,
+            "user_code": false
+          },
+          {
+            "function": "98",
+            "share": 0.047,
+            "user_code": false
+          },
+          {
+            "function": "52",
+            "share": 0.046,
+            "user_code": false
+          }
+        ]
+      },
+      "feedback": "O(1) measured; meets the required O(1).",
+      "duration_ms": 5936
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "contribution": 7,
+      "evidence": {
+        "inputs_checked": 18,
+        "valgrind": true,
+        "issues": [
+          {
+            "tool": "valgrind",
+            "kind": "memory-leak",
+            "bytes": 16,
+            "input": "7 5",
+            "where": "read_pair() line 6"
+          }
+        ],
+        "undefined_behaviour_notes": []
+      },
+      "feedback": "Memory issues: memory-leak at read_pair() line 6.",
+      "duration_ms": 13656
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "contribution": 7,
+      "evidence": {
+        "method": "llm",
+        "provider": "ollama",
+        "model": "qwen2.5-coder:7b",
+        "temperature": 0,
+        "seed": 42,
+        "cached": true,
+        "raw_response": "{\n  \"score\": 7,\n  \"reasons\": [\n    \"naming: 'pair' is a meaningful name, but 'read_pair' could be more descriptive.\",\n    \"comments: The comment is clear but could be more detailed, e.g., explaining the purpose of the function.\",\n    \"layout: The code is generally well-spaced, but there's a missing space after the comma in the `scanf` call.\",\n    \"structure for the reader: The code is structured well, but it could benefit from more comments explaining the logic, especially in the `main` function.\"\n  ],\n  \"suggestions\": [\n    \"Rename 'pair' to something more descriptive, like 'numbers'.\",\n    \"Add a comment explaining the purpose of the `scanf` call.\",\n    \"Fix the missing space after the comma in the `scanf` call.\",\n    \"Add comments in the `main` function to explain the logic, such as 'Read a pair of numbers and print their sum.'\"\n  ]\n}",
+        "heuristic_cross_check": 10
+      },
+      "feedback": "Readability 7/10: naming: 'pair' is a meaningful name, but 'read_pair' could be more descriptive.; comments: The comment is clear but could be more detailed, e.g., explaining the purpose of the function.; layout: The code is generally well-spaced, but there's a missing space after the comma in the `scanf` call..",
+      "duration_ms": 27
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "threshold": 0.85,
+        "distinctive_fingerprints": 27,
+        "ignored_boilerplate_fingerprints": 30,
+        "top_matches": [
+          {
+            "id": "peer:add_whitespace.c",
+            "kind": "peer",
+            "similarity": 0.111,
+            "fingerprints": 34
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1001.c",
+            "kind": "llm",
+            "similarity": 0,
+            "fingerprints": 7
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1002.c",
+            "kind": "llm",
+            "similarity": 0,
+            "fingerprints": 12
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1003.c",
+            "kind": "llm",
+            "similarity": 0,
+            "fingerprints": 7
+          },
+          {
+            "id": "peer:add_crash.c",
+            "kind": "peer",
+            "similarity": 0,
+            "fingerprints": 9
+          }
+        ],
+        "confidence": "normal"
+      },
+      "feedback": "Max similarity 0.111 (peer:add_whitespace.c), below the 0.85 threshold.",
+      "duration_ms": 11
+    }
+  ],
+  "flags": [],
+  "counterexamples": [],
+  "suggestions": [
+    "Free every block you malloc() (valgrind found 16 bytes definitely lost).",
+    "Rename 'pair' to something more descriptive, like 'numbers'.",
+    "Add a comment explaining the purpose of the `scanf` call.",
+    "Fix the missing space after the comma in the `scanf` call.",
+    "Add comments in the `main` function to explain the logic, such as 'Read a pair of numbers and print their sum.'"
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "A CS5103 lab with 150 students submits sort.c. `npm run grade:all` grades every file in one run, with the same rules, the same tests and the same seeds, and writes one JSON and one text report per student. TAs only open the reports carrying a flag.",
+        "benefit": "Hours of manual running and checking become minutes, and two students with the same mistake always lose the same marks."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The instructor reviews those three files instead of all 300.",
+        "benefit": "Manual checking is limited to suspicious cases, and renaming or reformatting does not hide copying."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "A quicksort that always picks the first element as pivot is O(n log n) on the random arrays used for measurement, so the estimator reports O(n log n) and full marks, although it is O(n^2) on already-sorted input.",
+        "mitigation": "Measure on several input shapes (sorted, reverse, all equal) and grade the worst; the cost is longer grading time."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability depends on the model, and output checking is literal",
+        "example": "With qwen2.5-coder the agent gives a file 7/10; the same file under another model or Ollama version may get 6/10 (the cache keeps one machine reproducible, not two different setups). Separately, a program that prints \"Sum = 12\" instead of \"12\" is computed correctly but fails every test.",
+        "mitigation": "Pin the model and its version in the rules and ship the LLM cache with the grades; state the exact output format in the problem statement."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "tutor_note": {
+    "text": "Your C program received a grade of 94. Your code passed all hidden tests, which is great! However, there are a few areas for improvement. Specifically, you need to address the memory leak in the `read_pair()` function at line 6. Additionally, enhancing the readability of your code could improve maintainability. Keep up the good work!",
+    "model": "ollama/qwen2.5-coder:7b",
+    "cached": true
+  }
+}

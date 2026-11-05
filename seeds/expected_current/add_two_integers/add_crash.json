@@ -1,0 +1,745 @@
+{
+  "submission": "add_crash.c",
+  "problem": "add_two_integers",
+  "submission_hash": "sha256:f7c500a828c48649c5e732f575ab0008f9e571d67b67946a34431666df300032",
+  "rules_hash": "sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce",
+  "inputs_hash": "sha256v2:60c6522b20f4eef9298ff9d14d6891fd153da0f7c90ae66de34a4f22cc750d95",
+  "grade": 47,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": false,
+    "smoke_status": "crashed with SIGSEGV",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.2,
+      "status": "ok",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {
+        "tests_passed": 0,
+        "tests_total": 10,
+        "failing": [
+          {
+            "test": "01",
+            "input": "7 5",
+            "expected": "12",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "02",
+            "input": "0 0",
+            "expected": "0",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "03",
+            "input": "-3 -4",
+            "expected": "-7",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "04",
+            "input": "100 -250",
+            "expected": "-150",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "05",
+            "input": "1000000 2000000",
+            "expected": "3000000",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "06",
+            "input": "-2147483648 0",
+            "expected": "-2147483648",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "07",
+            "input": "2147483647 1",
+            "expected": "2147483648",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "08",
+            "input": "  12\t  30",
+            "expected": "42",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "09",
+            "input": "123456789 987654321",
+            "expected": "1111111110",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "test": "10",
+            "input": "-1000000000 -1500000000",
+            "expected": "-2500000000",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          }
+        ],
+        "max_ms": 17
+      },
+      "feedback": "0/10 tests pass. First failure: test 01 (crashed with SIGSEGV).",
+      "duration_ms": 6320
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "flags": "-Wall -Wextra -Werror -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -Werror -std=c11.",
+      "duration_ms": 1690
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "informational": false,
+      "contribution": 7,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 8,
+          "max_function_length": 40,
+          "max_nesting": 4
+        },
+        "functions": [
+          {
+            "name": "main",
+            "lines": 8,
+            "cyclomatic": 1,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [
+          {
+            "line": 7,
+            "severity": "error",
+            "id": "nullPointer",
+            "message": "Null pointer dereference: first"
+          },
+          {
+            "line": 7,
+            "severity": "error",
+            "id": "nullPointer",
+            "message": "Null pointer dereference: second"
+          },
+          {
+            "line": 8,
+            "severity": "error",
+            "id": "nullPointer",
+            "message": "Null pointer dereference: first"
+          },
+          {
+            "line": 8,
+            "severity": "error",
+            "id": "nullPointer",
+            "message": "Null pointer dereference: second"
+          },
+          {
+            "line": 7,
+            "severity": "error",
+            "id": "nullPointer",
+            "message": "Null pointer dereference"
+          }
+        ],
+        "issues": [
+          "line 7: cppcheck error (nullPointer) Null pointer dereference: first",
+          "line 7: cppcheck error (nullPointer) Null pointer dereference: second",
+          "line 8: cppcheck error (nullPointer) Null pointer dereference: first",
+          "line 8: cppcheck error (nullPointer) Null pointer dereference: second",
+          "line 7: cppcheck error (nullPointer) Null pointer dereference"
+        ]
+      },
+      "feedback": "5 structural issue(s): line 7: cppcheck error (nullPointer) Null pointer dereference: first; line 7: cppcheck error (nullPointer) Null pointer dereference: second.",
+      "duration_ms": 1632
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 1,
+        "simple_program": true
+      },
+      "feedback": "Short, simple program: helper functions are optional.",
+      "duration_ms": 0
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {
+        "categories": {
+          "negatives": {
+            "passed": 0,
+            "total": 2
+          },
+          "zero": {
+            "passed": 0,
+            "total": 2
+          },
+          "int_overflow": {
+            "passed": 0,
+            "total": 2
+          }
+        },
+        "failing": [
+          {
+            "case": "negatives",
+            "input": "-5 -7",
+            "expected": "-12",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: both negative. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "case": "negatives",
+            "input": "-100 30",
+            "expected": "-70",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: negative plus positive. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "case": "zero",
+            "input": "0 0",
+            "expected": "0",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: both zero. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "case": "zero",
+            "input": "0 42",
+            "expected": "42",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: zero plus positive. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "case": "int_overflow",
+            "input": "2147483647 1",
+            "expected": "2147483648",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: INT_MAX + 1 exceeds 32-bit int. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          },
+          {
+            "case": "int_overflow",
+            "input": "-2147483648 -1",
+            "expected": "-2147483649",
+            "got": "(crashed with SIGSEGV)",
+            "status": "crash",
+            "note": "crashed with SIGSEGV",
+            "why": "This input tests: INT_MIN - 1 below 32-bit int. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+          }
+        ],
+        "random": {
+          "trials": 100,
+          "seed": 7,
+          "failures": 100,
+          "counterexamples": [
+            {
+              "case": "random trial #0",
+              "input": "-2147483648 854821782",
+              "expected": "-1292661866",
+              "got": "(crashed with SIGSEGV)",
+              "status": "crash",
+              "note": "crashed with SIGSEGV",
+              "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+            },
+            {
+              "case": "random trial #1",
+              "input": "-405781260 2147483647",
+              "expected": "1741702387",
+              "got": "(crashed with SIGSEGV)",
+              "status": "crash",
+              "note": "crashed with SIGSEGV",
+              "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+            },
+            {
+              "case": "random trial #2",
+              "input": "987078360 2147483647",
+              "expected": "3134562007",
+              "got": "(crashed with SIGSEGV)",
+              "status": "crash",
+              "note": "crashed with SIGSEGV",
+              "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+            }
+          ]
+        }
+      },
+      "feedback": "0/3 edge-case categories pass (failed: negatives, zero, int_overflow); random testing: 100/100 trials disagree with the reference.",
+      "duration_ms": 21029
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {
+        "required": "O(1)",
+        "measured": "fails at larger sizes",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 1,
+            "instructions": null,
+            "status": "failed (crash, exit 139)"
+          }
+        ],
+        "fits": [],
+        "profile_hot_functions": [],
+        "worst_shape": "normal",
+        "shape_results": [
+          {
+            "shape": "normal",
+            "score": 0,
+            "measured": "fails at larger sizes",
+            "measurements": [
+              {
+                "n": 1,
+                "instructions": null,
+                "status": "failed (crash, exit 139)"
+              }
+            ]
+          }
+        ]
+      },
+      "feedback": "Could not measure: the program did not finish cleanly at n = 1, so the required O(1) is not met at the sizes tested. Worst result across normal inputs; this is an empirical estimate.",
+      "duration_ms": 4386
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0,
+      "informational": false,
+      "contribution": 0,
+      "evidence": {
+        "inputs_checked": 18,
+        "valgrind": true,
+        "issues": [
+          {
+            "tool": "AddressSanitizer",
+            "kind": "SEGV",
+            "input": "7 5"
+          },
+          {
+            "tool": "valgrind",
+            "kind": "invalid-write",
+            "input": "7 5"
+          }
+        ],
+        "undefined_behaviour_notes": []
+      },
+      "feedback": "Memory issues: SEGV; invalid-write.",
+      "duration_ms": 24005
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "method": "heuristic (model unavailable)",
+        "heuristic": {
+          "score": 10,
+          "reasons": []
+        },
+        "error": "LLM calls are disabled (LLM_DISABLED); unverified historical cache entries are not used"
+      },
+      "feedback": "Readability 10/10 (heuristic): no issues found.",
+      "duration_ms": 1
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "comparison_count": 13,
+        "source_counts": {
+          "peer": 8,
+          "web": 2,
+          "llm": 3
+        },
+        "threshold": 0.85,
+        "distinctive_fingerprints": 11,
+        "ignored_boilerplate_fingerprints": 12,
+        "top_matches": [
+          {
+            "id": "peer:add_injection.c",
+            "kind": "peer",
+            "similarity": 0.286,
+            "fingerprints": 7
+          },
+          {
+            "id": "peer:add.c",
+            "kind": "peer",
+            "similarity": 0.286,
+            "fingerprints": 7
+          },
+          {
+            "id": "peer:add_infinite_loop.c",
+            "kind": "peer",
+            "similarity": 0.273,
+            "fingerprints": 17
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1001.c",
+            "kind": "llm",
+            "similarity": 0.222,
+            "fingerprints": 9
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1003.c",
+            "kind": "llm",
+            "similarity": 0.222,
+            "fingerprints": 9
+          }
+        ],
+        "confidence": "normal",
+        "assessment": "compared"
+      },
+      "feedback": "Compared with 13 source(s). Max similarity 0.286 (peer:add_injection.c), below the 0.85 threshold. This comparison does not prove originality.",
+      "duration_ms": 38
+    }
+  ],
+  "flags": [],
+  "counterexamples": [
+    {
+      "source": "hidden test",
+      "test": "01",
+      "input": "7 5",
+      "expected": "12",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "02",
+      "input": "0 0",
+      "expected": "0",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "03",
+      "input": "-3 -4",
+      "expected": "-7",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "04",
+      "input": "100 -250",
+      "expected": "-150",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "05",
+      "input": "1000000 2000000",
+      "expected": "3000000",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "06",
+      "input": "-2147483648 0",
+      "expected": "-2147483648",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "07",
+      "input": "2147483647 1",
+      "expected": "2147483648",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "08",
+      "input": "  12\t  30",
+      "expected": "42",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "09",
+      "input": "123456789 987654321",
+      "expected": "1111111110",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "hidden test",
+      "test": "10",
+      "input": "-1000000000 -1500000000",
+      "expected": "-2500000000",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "edge case",
+      "case": "negatives",
+      "input": "-5 -7",
+      "expected": "-12",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "This input tests: both negative. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "edge case",
+      "case": "negatives",
+      "input": "-100 30",
+      "expected": "-70",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "This input tests: negative plus positive. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "edge case",
+      "case": "zero",
+      "input": "0 42",
+      "expected": "42",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "This input tests: zero plus positive. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "edge case",
+      "case": "int_overflow",
+      "input": "-2147483648 -1",
+      "expected": "-2147483649",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "This input tests: INT_MIN - 1 below 32-bit int. The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #0",
+      "input": "-2147483648 854821782",
+      "expected": "-1292661866",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #1",
+      "input": "-405781260 2147483647",
+      "expected": "1741702387",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #2",
+      "input": "987078360 2147483647",
+      "expected": "3134562007",
+      "got": "(crashed with SIGSEGV)",
+      "status": "crash",
+      "note": "crashed with SIGSEGV",
+      "why": "The program crashed with SIGSEGV; check array bounds, NULL pointers and how many items are read."
+    }
+  ],
+  "suggestions": [
+    "Re-run the failing inputs shown in the report and compare your output with the expected one.",
+    "Break long or deeply branched functions into smaller helpers, and fix the cppcheck findings listed in the report.",
+    "Check that negative inputs are read and handled correctly.",
+    "Make sure zero values do not break the logic.",
+    "Sums of two ints can exceed INT_MAX: compute in long long (or check the operands before adding).",
+    "Make the program handle n = 1 and larger (check fixed-size arrays and limits); only then can its running time be measured.",
+    "Fix the memory error(s): SEGV, out-of-bounds; check array indices against the array size."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "Students submit C programs through the web UI. The worker evaluates each against the published rules and tests and stores reports for admin review.",
+        "benefit": "Automates repeated execution and collects evidence; throughput depends on the available tools and machine."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The admin reviews those three files instead of all 300.",
+        "benefit": "Helps prioritize human review. Similarity neither proves copying nor establishes AI authorship."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "An algorithm can behave well on the normal, sorted, reverse and equal-value samples yet be slow on a different adversarial arrangement or at larger sizes.",
+        "mitigation": "The array estimator takes the worst observed shape. Review the selected sizes; empirical measurements do not prove a worst-case complexity bound."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability rules are heuristic, and output checking is literal",
+        "example": "A fixed rubric can penalize a concise program for missing comments even if a teacher finds it clear. Printing \"Sum = 12\" instead of the specified \"12\" also fails an output test.",
+        "mitigation": "Inspect the rubric and use admin overrides when justified. AI advice never changes the readability score. State the exact output format in the question."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "corpus_hash": "sha256:a9a7657c5361ce9c3cd7be8c556d35e4325d0d2a244793ed6edb32fa35ecaf15",
+  "model_digests": null,
+  "pre_analysis": {
+    "denylist": [],
+    "sandbox": "docker",
+    "policy": "flag",
+    "blocked": false,
+    "llm": null,
+    "verified": null,
+    "complexity": null
+  },
+  "provisional": true,
+  "environment": {
+    "sandbox": "docker",
+    "valgrind": true,
+    "llm_review": "heuristic (model unavailable)"
+  },
+  "provisional_reasons": [
+    "readability: the model was unavailable, heuristic used"
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "submission": "sort_good.c",
+  "problem": "sort_integers",
+  "submission_hash": "sha256:f482d557c0caf8f80c2c1b90ad02470bf575a0f772309d6a0e7b42bb1969b003",
+  "rules_hash": "sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3",
+  "inputs_hash": "sha256:c48be1bf2dd2d344b54196909676e4ffc0b2235eac47a3ccdbea9b9c6064836d",
+  "grade": 99,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": true,
+    "smoke_status": "ok",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.25,
+      "status": "ok",
+      "score": 1,
+      "contribution": 25,
+      "evidence": {
+        "tests_passed": 10,
+        "tests_total": 10,
+        "failing": [],
+        "max_ms": 27
+      },
+      "feedback": "All 10 hidden tests pass.",
+      "duration_ms": 2102
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "contribution": 5,
+      "evidence": {
+        "flags": "-Wall -Wextra -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -std=c11.",
+      "duration_ms": 1385
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 10,
+          "max_function_length": 40,
+          "max_nesting": 3
+        },
+        "functions": [
+          {
+            "name": "merge",
+            "lines": 9,
+            "cyclomatic": 7,
+            "nesting": 1
+          },
+          {
+            "name": "merge_sort",
+            "lines": 7,
+            "cyclomatic": 2,
+            "nesting": 0
+          },
+          {
+            "name": "print_values",
+            "lines": 4,
+            "cyclomatic": 3,
+            "nesting": 0
+          },
+          {
+            "name": "main",
+            "lines": 22,
+            "cyclomatic": 9,
+            "nesting": 1
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1256
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 4,
+        "expected_min": 3,
+        "helpers_used_by_main": [
+          "merge",
+          "merge_sort",
+          "print_values"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 22
+      },
+      "feedback": "4 functions; main() delegates to merge, merge_sort, print_values.",
+      "duration_ms": 25
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "contribution": 15,
+      "evidence": {
+        "categories": {
+          "empty": {
+            "passed": 1,
+            "total": 1
+          },
+          "single": {
+            "passed": 1,
+            "total": 1
+          },
+          "duplicates": {
+            "passed": 1,
+            "total": 1
+          },
+          "negatives": {
+            "passed": 1,
+            "total": 1
+          },
+          "large_values": {
+            "passed": 1,
+            "total": 1
+          },
+          "reverse": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "failing": [],
+        "random": {
+          "trials": 100,
+          "seed": 11,
+          "failures": 0,
+          "counterexamples": []
+        }
+      },
+      "feedback": "6/6 edge-case categories pass; random testing: 0/100 trials disagree with the reference.",
+      "duration_ms": 7656
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "contribution": 15,
+      "evidence": {
+        "required": "O(n log n)",
+        "measured": "O(n)",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 500,
+            "instructions": 999200
+          },
+          {
+            "n": 1000,
+            "instructions": 1906038
+          },
+          {
+            "n": 2000,
+            "instructions": 3740100
+          },
+          {
+            "n": 4000,
+            "instructions": 7445673
+          },
+          {
+            "n": 8000,
+            "instructions": 14928353
+          }
+        ],
+        "fits": [
+          {
+            "class": "O(log n)",
+            "relative_error": 0.317
+          },
+          {
+            "class": "O(n)",
+            "relative_error": 0.004
+          },
+          {
+            "class": "O(n log n)",
+            "relative_error": 0.025
+          },
+          {
+            "class": "O(n^2)",
+            "relative_error": 0.193
+          },
+          {
+            "class": "O(n^3)",
+            "relative_error": 0.29
+          }
+        ],
+        "profile_hot_functions": [
+          {
+            "function": "__vfscanf_internal",
+            "share": 0.315,
+            "user_code": false
+          },
+          {
+            "function": "__vfprintf_internal",
+            "share": 0.178,
+            "user_code": false
+          },
+          {
+            "function": "617",
+            "share": 0.154,
+            "user_code": false
+          },
+          {
+            "function": "608",
+            "share": 0.107,
+            "user_code": false
+          },
+          {
+            "function": "634",
+            "share": 0.051,
+            "user_code": false
+          }
+        ]
+      },
+      "feedback": "O(n) measured; meets the required O(n log n).",
+      "duration_ms": 6052
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "inputs_checked": 15,
+        "valgrind": true,
+        "issues": [],
+        "undefined_behaviour_notes": []
+      },
+      "feedback": "ASan and valgrind clean on 15 inputs.",
+      "duration_ms": 15076
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 0.8,
+      "contribution": 4,
+      "evidence": {
+        "method": "llm",
+        "provider": "ollama",
+        "model": "qwen2.5-coder:7b",
+        "temperature": 0,
+        "seed": 42,
+        "cached": true,
+        "raw_response": "{\n  \"score\": 8,\n  \"reasons\": [\n    \"Variable names are meaningful and descriptive.\",\n    \"Comments explain the purpose of the code.\",\n    \"Layout is clean with proper spacing around operators and consistent indentation.\",\n    \"The code is structured into named steps with clear separation of concerns.\"\n  ],\n  \"suggestions\": []\n}",
+        "heuristic_cross_check": 10
+      },
+      "feedback": "Readability 8/10: Variable names are meaningful and descriptive.; Comments explain the purpose of the code.; Layout is clean with proper spacing around operators and consistent indentation..",
+      "duration_ms": 25
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "contribution": 5,
+      "evidence": {
+        "threshold": 0.85,
+        "distinctive_fingerprints": 60,
+        "ignored_boilerplate_fingerprints": 98,
+        "top_matches": [
+          {
+            "id": "peer:sort_leak.c",
+            "kind": "peer",
+            "similarity": 0.2,
+            "fingerprints": 20
+          },
+          {
+            "id": "peer:sort_cmp_overflow.c",
+            "kind": "peer",
+            "similarity": 0.182,
+            "fingerprints": 11
+          },
+          {
+            "id": "web:tutorial_site_bubble.c",
+            "kind": "web",
+            "similarity": 0.089,
+            "fingerprints": 45
+          },
+          {
+            "id": "peer:sort_heap_overflow.c",
+            "kind": "peer",
+            "similarity": 0.087,
+            "fingerprints": 23
+          },
+          {
+            "id": "peer:sort_bubble.c",
+            "kind": "peer",
+            "similarity": 0.081,
+            "fingerprints": 37
+          }
+        ],
+        "confidence": "normal"
+      },
+      "feedback": "Max similarity 0.2 (peer:sort_leak.c), below the 0.85 threshold.",
+      "duration_ms": 9
+    }
+  ],
+  "flags": [],
+  "counterexamples": [],
+  "suggestions": [
+    "Readability: Variable names are meaningful and descriptive..",
+    "Readability: Comments explain the purpose of the code..",
+    "Readability: Layout is clean with proper spacing around operators and consistent indentation..",
+    "Readability: The code is structured into named steps with clear separation of concerns.."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "A CS5103 lab with 150 students submits sort.c. `npm run grade:all` grades every file in one run, with the same rules, the same tests and the same seeds, and writes one JSON and one text report per student. TAs only open the reports carrying a flag.",
+        "benefit": "Hours of manual running and checking become minutes, and two students with the same mistake always lose the same marks."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The instructor reviews those three files instead of all 300.",
+        "benefit": "Manual checking is limited to suspicious cases, and renaming or reformatting does not hide copying."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "A quicksort that always picks the first element as pivot is O(n log n) on the random arrays used for measurement, so the estimator reports O(n log n) and full marks, although it is O(n^2) on already-sorted input.",
+        "mitigation": "Measure on several input shapes (sorted, reverse, all equal) and grade the worst; the cost is longer grading time."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability depends on the model, and output checking is literal",
+        "example": "With qwen2.5-coder the agent gives a file 7/10; the same file under another model or Ollama version may get 6/10 (the cache keeps one machine reproducible, not two different setups). Separately, a program that prints \"Sum = 12\" instead of \"12\" is computed correctly but fails every test.",
+        "mitigation": "Pin the model and its version in the rules and ship the LLM cache with the grades; state the exact output format in the problem statement."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "tutor_note": {
+    "text": "Your C program received a grade of 99. Your code is clean, readable, and passes all hidden tests. Keep up the good work!",
+    "model": "ollama/qwen2.5-coder:7b",
+    "cached": true
+  }
+}

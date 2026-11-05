@@ -1,0 +1,274 @@
+{
+  "submission": "add_infinite_loop.c",
+  "problem": "add_two_integers",
+  "submission_hash": "sha256:a3ebaf5187139c9274640a2fa7556fee94cf7595ba38c41f1810e2654f9df3e9",
+  "rules_hash": "sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce",
+  "inputs_hash": "sha256:81bbe67f879487ec57d93845571352f98eeeee89a73ce27df91eda2ae4482be4",
+  "grade": 47,
+  "partial": true,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": false,
+    "smoke_status": "time limit exceeded (killed)",
+    "suspected_infinite_loop": true,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.2,
+      "status": "skipped",
+      "score": 0,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "flags": "-Wall -Wextra -Werror -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -Werror -std=c11.",
+      "duration_ms": 1693
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 8,
+          "max_function_length": 40,
+          "max_nesting": 4
+        },
+        "functions": [
+          {
+            "name": "add_by_counting",
+            "lines": 8,
+            "cyclomatic": 2,
+            "nesting": 1
+          },
+          {
+            "name": "main",
+            "lines": 6,
+            "cyclomatic": 1,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1645
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 2,
+        "expected_min": 2,
+        "helpers_used_by_main": [
+          "add_by_counting"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 6
+      },
+      "feedback": "2 functions; main() delegates to add_by_counting.",
+      "duration_ms": 24
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "skipped",
+      "score": 0,
+      "contribution": 0,
+      "evidence": {},
+      "feedback": "not run: the smoke run exceeded 1s (suspected infinite loop)",
+      "duration_ms": 0
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 0.7,
+      "contribution": 7,
+      "evidence": {
+        "method": "llm",
+        "provider": "ollama",
+        "model": "qwen2.5-coder:7b",
+        "temperature": 0,
+        "seed": 42,
+        "cached": true,
+        "raw_response": "{\n    \"score\": 7,\n    \"reasons\": [\n        \"The variable 'i' is used in the loop but never incremented, causing an infinite loop.\",\n        \"The function name 'add_by_counting' is clear, but the variable names 'a' and 'b' are single-letter and meaningless.\"\n    ],\n    \"suggestions\": [\n        \"Fix the infinite loop by incrementing 'i' in the loop condition.\",\n        \"Use more descriptive variable names like 'initial_value' and 'increment' instead of 'a' and 'b'.\"\n    ]\n}",
+        "heuristic_cross_check": 7
+      },
+      "feedback": "Readability 7/10: The variable 'i' is used in the loop but never incremented, causing an infinite loop.; The function name 'add_by_counting' is clear, but the variable names 'a' and 'b' are single-letter and meaningless..",
+      "duration_ms": 24
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "threshold": 0.85,
+        "distinctive_fingerprints": 18,
+        "ignored_boilerplate_fingerprints": 27,
+        "top_matches": [
+          {
+            "id": "peer:add_injection.c",
+            "kind": "peer",
+            "similarity": 0.625,
+            "fingerprints": 8
+          },
+          {
+            "id": "peer:add.c",
+            "kind": "peer",
+            "similarity": 0.625,
+            "fingerprints": 8
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1001.c",
+            "kind": "llm",
+            "similarity": 0.444,
+            "fingerprints": 9
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1003.c",
+            "kind": "llm",
+            "similarity": 0.444,
+            "fingerprints": 9
+          },
+          {
+            "id": "peer:add_crash.c",
+            "kind": "peer",
+            "similarity": 0.273,
+            "fingerprints": 11
+          }
+        ],
+        "confidence": "normal"
+      },
+      "feedback": "Max similarity 0.625 (peer:add_injection.c), below the 0.85 threshold.",
+      "duration_ms": 9
+    }
+  ],
+  "flags": [
+    {
+      "type": "suspected_infinite_loop",
+      "detail": "sample input did not finish within 1s"
+    }
+  ],
+  "counterexamples": [],
+  "suggestions": [
+    "Fix the infinite loop by incrementing 'i' in the loop condition.",
+    "Use more descriptive variable names like 'initial_value' and 'increment' instead of 'a' and 'b'."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "A CS5103 lab with 150 students submits sort.c. `npm run grade:all` grades every file in one run, with the same rules, the same tests and the same seeds, and writes one JSON and one text report per student. TAs only open the reports carrying a flag.",
+        "benefit": "Hours of manual running and checking become minutes, and two students with the same mistake always lose the same marks."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The instructor reviews those three files instead of all 300.",
+        "benefit": "Manual checking is limited to suspicious cases, and renaming or reformatting does not hide copying."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "A quicksort that always picks the first element as pivot is O(n log n) on the random arrays used for measurement, so the estimator reports O(n log n) and full marks, although it is O(n^2) on already-sorted input.",
+        "mitigation": "Measure on several input shapes (sorted, reverse, all equal) and grade the worst; the cost is longer grading time."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability depends on the model, and output checking is literal",
+        "example": "With qwen2.5-coder the agent gives a file 7/10; the same file under another model or Ollama version may get 6/10 (the cache keeps one machine reproducible, not two different setups). Separately, a program that prints \"Sum = 12\" instead of \"12\" is computed correctly but fails every test.",
+        "mitigation": "Pin the model and its version in the rules and ship the LLM cache with the grades; state the exact output format in the problem statement."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "tutor_note": {
+    "text": "Your C program received a grade of 47. It appears there may have been an issue with an infinite loop, as the smoke run exceeded the 1-second limit. I recommend reviewing your code for any potential infinite loops and optimizing your logic for better performance. Keep up the good work!",
+    "model": "ollama/qwen2.5-coder:7b",
+    "cached": true
+  }
+}

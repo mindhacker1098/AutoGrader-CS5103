@@ -1,0 +1,163 @@
+===== Grading report for add_injection.c =====
+Problem: add_two_integers
+Overall grade: 80.3 / 100
+
+FLAGS:
+  ! prompt_injection_attempt: submission contains text addressed to the grader: "grader:"
+  ! possible_copy_low_confidence: 1 similarity with peer:add.c on a short program (8 fingerprints)
+
+Metric         Weight Score     Contrib. Verdict
+correctness    20     16/20     16.0     8/10 tests pass. First failure: test 07 (runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int').
+syntax         10     10/10     10.0     Clean build under -Wall -Wextra -Werror -std=c11.
+structure      10     10/10     10.0     Functions are within the complexity, length and nesting limits; cppcheck found no defects.
+modularity     10     3/10      3.0      Only main() is defined: all logic is in one block.
+logical        10     5.3/10    5.3      2/3 edge-case categories pass (failed: int_overflow); random testing: 29/100 trials disagree with the reference.
+complexity     10     10/10     10.0     O(1) measured; meets the required O(1).
+memory_safety  10     10/10     10.0     ASan and valgrind clean on 18 inputs. (UB noted: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int')
+readability    10     6/10      6.0      Readability 6/10 (deterministic heuristic; the submission contained text addressed to the grader).
+originality    10     10/10     10.0     Similarity 1 with peer:add.c, but only 8 distinctive fingerprints: too little code to treat as evidence. Flagged for review, not penalised.
+
+--- Where you failed ---
+Test 07:
+        INPUT:    2147483647 1
+        EXPECTED: 2147483648
+        GOT:      -2147483648
+        WHY:      The sanitizer reports "runtime error: signed integer overflow:
+                  2147483647 + 1 cannot be represented in type 'int'". The result
+                  does not fit in a 32-bit int: use long long, or check the
+                  operands before computing. Expected "2147483648" but the program
+                  printed "-2147483648".
+Test 10:
+        INPUT:    -1000000000 -1500000000
+        EXPECTED: -2500000000
+        GOT:      1794967296
+        WHY:      The sanitizer reports "runtime error: signed integer overflow:
+                  -1000000000 + -1500000000 cannot be represented in type 'int'".
+                  The result does not fit in a 32-bit int: use long long, or check
+                  the operands before computing. Expected "-2500000000" but the
+                  program printed "1794967296".
+Edge case "int_overflow":
+        INPUT:    -2147483648 -1
+        EXPECTED: -2147483649
+        GOT:      2147483647
+        WHY:      This input tests: INT_MIN - 1 below 32-bit int. The sanitizer
+                  reports "runtime error: signed integer overflow: -2147483648 +
+                  -1 cannot be represented in type 'int'". The result does not fit
+                  in a 32-bit int: use long long, or check the operands before
+                  computing. Expected "-2147483649" but the program printed
+                  "2147483647".
+Counter-example (random trial #2):
+        INPUT:    987078360 2147483647
+        EXPECTED: 3134562007
+        GOT:      -1160405289
+        WHY:      The sanitizer reports "runtime error: signed integer overflow:
+                  987078360 + 2147483647 cannot be represented in type 'int'". The
+                  result does not fit in a 32-bit int: use long long, or check the
+                  operands before computing. Expected "3134562007" but the program
+                  printed "-1160405289".
+Counter-example (random trial #5):
+        INPUT:    2147483646 2147483647
+        EXPECTED: 4294967293
+        GOT:      -3
+        WHY:      The sanitizer reports "runtime error: signed integer overflow:
+                  2147483646 + 2147483647 cannot be represented in type 'int'".
+                  The result does not fit in a 32-bit int: use long long, or check
+                  the operands before computing. Expected "4294967293" but the
+                  program printed "-3".
+Counter-example (random trial #7):
+        INPUT:    2147483646 522374684
+        EXPECTED: 2669858330
+        GOT:      -1625108966
+        WHY:      The sanitizer reports "runtime error: signed integer overflow:
+                  2147483646 + 522374684 cannot be represented in type 'int'". The
+                  result does not fit in a 32-bit int: use long long, or check the
+                  operands before computing. Expected "2669858330" but the program
+                  printed "-1625108966".
+
+--- Suggestions to raise the grade ---
+- Re-run the failing inputs shown in the report and compare your output with the expected one.
+- Move the core computation into its own function (e.g. a helper that takes the inputs and returns the result) and call it from main().
+- Sums of two ints can exceed INT_MAX: compute in long long (or check the operands before adding).
+- Readability: most variable names are single letters (x, y).
+- Readability: operators without surrounding spaces.
+
+--- Tutor note (written by ollama/qwen2.5-coder:7b; checked against the evidence, does not affect the grade) ---
+Your C program received a grade of 80.3. It demonstrates good modularity
+                  with all logic encapsulated within the main function. However, there are
+                  areas for improvement in logical correctness, with two out of three
+                  edge-case categories failing, and a runtime error due to integer overflow.
+                  Additionally, the readability score is 6/10, which suggests that the code
+                  could be more understandable. Keep working on these aspects to enhance your
+                  program's robustness and clarity.
+
+--- Usefulness & limitations of this evaluation ---
+Useful for:
+  1. Grading a large lab course unattended
+     Example: A CS5103 lab with 150 students submits sort.c. `npm run grade:all`
+              grades every file in one run, with the same rules, the same tests
+              and the same seeds, and writes one JSON and one text report per
+              student. TAs only open the reports carrying a flag.
+     Benefit: Hours of manual running and checking become minutes, and two
+              students with the same mistake always lose the same marks.
+  2. Instant feedback before the deadline
+     Example: A student uploads add.c in the web UI and is told: input
+              "2147483647 1", expected 2147483648, got -2147483648, because the
+              sanitizer reports signed integer overflow; use long long. They fix
+              it before the real submission.
+     Benefit: The student gets a concrete failing input and the reason, not just
+              'wrong answer', which is how people actually learn to debug.
+  3. Coding-interview and hiring screens
+     Example: A company gives 500 candidates the 'sort integers' task. The agent
+              ranks them by correctness, edge cases (empty input,
+              INT_MIN/INT_MAX), measured complexity and memory safety, with a
+              per-metric explanation for every score.
+     Benefit: Fast first-round filtering where every rejection can be justified
+              metric by metric.
+  4. Plagiarism and LLM-copy triage
+     Example: Two submissions reach 0.93 similarity (threshold 0.85) after
+              variables were renamed, and a third matches a solution in the LLM
+              corpus. The instructor reviews those three files instead of all
+              300.
+     Benefit: Manual checking is limited to suspicious cases, and renaming or
+              reformatting does not hide copying.
+Limits of this report:
+  1. Tests cannot prove correctness
+     Example: A program contains `if (a == 123457 && b == -9) puts("0"); else
+              printf("%lld\n", (long long)a + b);`. No hidden test, edge case or
+              random trial happens to use exactly that pair, so the agent
+              reports full correctness for a program that is wrong on one input.
+     Fix: More trials and generators that target the program's own constants
+          (read from the source) would raise the chance of hitting such
+          branches, but testing can only show the presence of bugs, never
+          their absence.
+  2. Measured complexity depends on the inputs generated
+     Example: A quicksort that always picks the first element as pivot is O(n
+              log n) on the random arrays used for measurement, so the estimator
+              reports O(n log n) and full marks, although it is O(n^2) on
+              already-sorted input.
+     Fix: Measure on several input shapes (sorted, reverse, all equal) and
+          grade the worst; the cost is longer grading time.
+  3. Similarity is unreliable for very short programs and for restyled LLM code
+     Example: Two students independently write the same 6-line add.c. Once the
+              boilerplate shared with the reference is removed, too few
+              fingerprints are left, so the agent reports 'low confidence, not
+              flagged': a genuine copy of a short program would also be missed.
+              A student who takes an LLM solution and restructures the loops
+              evades the LLM corpus.
+     Fix: Treat originality as a triage flag for a human, never as proof;
+          enlarge the LLM corpus with several models and prompts.
+  4. Readability depends on the model, and output checking is literal
+     Example: With qwen2.5-coder the agent gives a file 7/10; the same file
+              under another model or Ollama version may get 6/10 (the cache
+              keeps one machine reproducible, not two different setups).
+              Separately, a program that prints "Sum = 12" instead of "12" is
+              computed correctly but fails every test.
+     Fix: Pin the model and its version in the rules and ship the LLM cache
+          with the grades; state the exact output format in the problem
+          statement.
+
+--- Reproducibility ---
+submission sha256:be21a5e9470451c4024cb6f538d918ab081d1b488a5a4f02da36d230dac47fde
+rules      sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce
+tests/ref  sha256:81bbe67f879487ec57d93845571352f98eeeee89a73ce27df91eda2ae4482be4
+tools      sandbox=docker; gcc=gcc (Debian 12.2.0-14+deb12u1) 12.2.0; valgrind=valgrind-3.19.0; cppcheck=Cppcheck 2.10

@@ -1,0 +1,420 @@
+{
+  "submission": "sort_bubble.c",
+  "problem": "sort_integers",
+  "submission_hash": "sha256:7e9738c9eff371b5b7c5d95471c8e7b878651819446a36a229e76f8911ee40b4",
+  "rules_hash": "sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3",
+  "inputs_hash": "sha256:c48be1bf2dd2d344b54196909676e4ffc0b2235eac47a3ccdbea9b9c6064836d",
+  "grade": 89,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": true,
+    "smoke_status": "ok",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.25,
+      "status": "ok",
+      "score": 0.9,
+      "contribution": 22.5,
+      "evidence": {
+        "tests_passed": 9,
+        "tests_total": 10,
+        "failing": [
+          {
+            "test": "10",
+            "input": "50000\n2268990 772791529 -1212516549 1582789846 1563943454 -1288679461 -1342601844 -111062063 -392833029 848321931 1786272357 -1785850455 684791090 1684378495 -781694437 -1021615296 -1343709001 1090079454 -570479883 -984068017 1085560702 812946501 -713034767 240453690 272949825 -1170851678 143717179 1578190283 1200242838 486382146 -1071171698 -1611137296 -1168263543 -1752722915 -1736692015 67374988\n... (546939 more characters; full text in tests\\10.in)",
+            "expected": "-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454629 -1999308407 -1999208746 -1999097220 -1999001346 -1998868878 -1998689021 -1998681314 -1998582973 -1998524371 -1998475837 -1998422890 -1998208996 -1998161176 -1998101749 -1998068319 -1997970534 -1997927303 -1997904690 -1997894889 -1997745952 -1997573987 -1997564067 -1997445850 -1997409239 -1997405060 -1997386990 -199\n... (546933 more characters; full text in tests\\10.out)",
+            "got": "(time limit exceeded (killed))",
+            "status": "timeout",
+            "note": "time limit exceeded (killed)",
+            "why": "The program did not finish within the time limit: likely an infinite loop or an algorithm that is too slow for this input."
+          }
+        ],
+        "max_ms": 1005
+      },
+      "feedback": "9/10 tests pass. First failure: test 10 (time limit exceeded (killed)).",
+      "duration_ms": 4734
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "contribution": 5,
+      "evidence": {
+        "flags": "-Wall -Wextra -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -std=c11.",
+      "duration_ms": 1355
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 10,
+          "max_function_length": 40,
+          "max_nesting": 3
+        },
+        "functions": [
+          {
+            "name": "bubble_sort",
+            "lines": 14,
+            "cyclomatic": 5,
+            "nesting": 3
+          },
+          {
+            "name": "print_numbers",
+            "lines": 6,
+            "cyclomatic": 3,
+            "nesting": 1
+          },
+          {
+            "name": "main",
+            "lines": 11,
+            "cyclomatic": 5,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1280
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 3,
+        "expected_min": 3,
+        "helpers_used_by_main": [
+          "bubble_sort",
+          "print_numbers"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 11
+      },
+      "feedback": "3 functions; main() delegates to bubble_sort, print_numbers.",
+      "duration_ms": 29
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "contribution": 15,
+      "evidence": {
+        "categories": {
+          "empty": {
+            "passed": 1,
+            "total": 1
+          },
+          "single": {
+            "passed": 1,
+            "total": 1
+          },
+          "duplicates": {
+            "passed": 1,
+            "total": 1
+          },
+          "negatives": {
+            "passed": 1,
+            "total": 1
+          },
+          "large_values": {
+            "passed": 1,
+            "total": 1
+          },
+          "reverse": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "failing": [],
+        "random": {
+          "trials": 100,
+          "seed": 11,
+          "failures": 0,
+          "counterexamples": []
+        }
+      },
+      "feedback": "6/6 edge-case categories pass; random testing: 0/100 trials disagree with the reference.",
+      "duration_ms": 7293
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 0.5,
+      "contribution": 7.5,
+      "evidence": {
+        "required": "O(n log n)",
+        "measured": "O(n^2)",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 500,
+            "instructions": 2186221
+          },
+          {
+            "n": 1000,
+            "instructions": 6919252
+          },
+          {
+            "n": 2000,
+            "instructions": 24205129
+          },
+          {
+            "n": 4000,
+            "instructions": 90116668
+          },
+          {
+            "n": 8000,
+            "instructions": 348389918
+          }
+        ],
+        "fits": [
+          {
+            "class": "O(log n)",
+            "relative_error": 0.756
+          },
+          {
+            "class": "O(n)",
+            "relative_error": 0.303
+          },
+          {
+            "class": "O(n log n)",
+            "relative_error": 0.259
+          },
+          {
+            "class": "O(n^2)",
+            "relative_error": 0.01
+          },
+          {
+            "class": "O(n^3)",
+            "relative_error": 0.173
+          }
+        ],
+        "profile_hot_functions": [
+          {
+            "function": "bubble_sort",
+            "share": 0.964,
+            "user_code": true
+          },
+          {
+            "function": "__vfscanf_internal",
+            "share": 0.013,
+            "user_code": false
+          },
+          {
+            "function": "__vfprintf_internal",
+            "share": 0.008,
+            "user_code": false
+          },
+          {
+            "function": "____strtol_l_internal",
+            "share": 0.005,
+            "user_code": false
+          },
+          {
+            "function": "636",
+            "share": 0.002,
+            "user_code": false
+          }
+        ]
+      },
+      "feedback": "O(n^2) measured, but O(n log n) is required; bubble_sort() uses 96% of the instructions.",
+      "duration_ms": 8023
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "contribution": 10,
+      "evidence": {
+        "inputs_checked": 15,
+        "valgrind": true,
+        "issues": [],
+        "undefined_behaviour_notes": []
+      },
+      "feedback": "ASan and valgrind clean on 15 inputs.",
+      "duration_ms": 18807
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 0.8,
+      "contribution": 4,
+      "evidence": {
+        "method": "llm",
+        "provider": "ollama",
+        "model": "qwen2.5-coder:7b",
+        "temperature": 0,
+        "seed": 42,
+        "cached": true,
+        "raw_response": "{\n  \"score\": 8,\n  \"reasons\": [\n    \"The variable names are meaningful and descriptive.\",\n    \"Comments explain the purpose of the functions.\",\n    \"The code is well-indented and spaced around operators.\",\n    \"The structure is clear with named steps and no magic numbers.\"\n  ],\n  \"suggestions\": []\n}",
+        "heuristic_cross_check": 10
+      },
+      "feedback": "Readability 8/10: The variable names are meaningful and descriptive.; Comments explain the purpose of the functions.; The code is well-indented and spaced around operators..",
+      "duration_ms": 28
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "contribution": 5,
+      "evidence": {
+        "threshold": 0.85,
+        "distinctive_fingerprints": 40,
+        "ignored_boilerplate_fingerprints": 97,
+        "top_matches": [
+          {
+            "id": "peer:sort_cmp_overflow.c",
+            "kind": "peer",
+            "similarity": 0.571,
+            "fingerprints": 14
+          },
+          {
+            "id": "web:tutorial_site_bubble.c",
+            "kind": "web",
+            "similarity": 0.25,
+            "fingerprints": 44
+          },
+          {
+            "id": "peer:sort_fixed_array.c",
+            "kind": "peer",
+            "similarity": 0.111,
+            "fingerprints": 9
+          },
+          {
+            "id": "peer:sort_leak.c",
+            "kind": "peer",
+            "similarity": 0.1,
+            "fingerprints": 20
+          },
+          {
+            "id": "peer:sort_heap_overflow.c",
+            "kind": "peer",
+            "similarity": 0.095,
+            "fingerprints": 21
+          }
+        ],
+        "confidence": "normal"
+      },
+      "feedback": "Max similarity 0.571 (peer:sort_cmp_overflow.c), below the 0.85 threshold.",
+      "duration_ms": 12
+    }
+  ],
+  "flags": [],
+  "counterexamples": [
+    {
+      "source": "hidden test",
+      "test": "10",
+      "input": "50000\n2268990 772791529 -1212516549 1582789846 1563943454 -1288679461 -1342601844 -111062063 -392833029 848321931 1786272357 -1785850455 684791090 1684378495 -781694437 -1021615296 -1343709001 1090079454 -570479883 -984068017 1085560702 812946501 -713034767 240453690 272949825 -1170851678 143717179 1578190283 1200242838 486382146 -1071171698 -1611137296 -1168263543 -1752722915 -1736692015 67374988\n... (546939 more characters; full text in tests\\10.in)",
+      "expected": "-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454629 -1999308407 -1999208746 -1999097220 -1999001346 -1998868878 -1998689021 -1998681314 -1998582973 -1998524371 -1998475837 -1998422890 -1998208996 -1998161176 -1998101749 -1998068319 -1997970534 -1997927303 -1997904690 -1997894889 -1997745952 -1997573987 -1997564067 -1997445850 -1997409239 -1997405060 -1997386990 -199\n... (546933 more characters; full text in tests\\10.out)",
+      "got": "(time limit exceeded (killed))",
+      "status": "timeout",
+      "note": "time limit exceeded (killed)",
+      "why": "The program did not finish within the time limit: likely an infinite loop or an algorithm that is too slow for this input."
+    }
+  ],
+  "suggestions": [
+    "Re-run the failing inputs shown in the report and compare your output with the expected one.",
+    "Your algorithm grows as O(n^2); the problem requires O(n log n). Use an O(n log n) method such as qsort() or merge sort instead of nested loops.",
+    "Readability: The variable names are meaningful and descriptive..",
+    "Readability: Comments explain the purpose of the functions..",
+    "Readability: The code is well-indented and spaced around operators..",
+    "Readability: The structure is clear with named steps and no magic numbers.."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "A CS5103 lab with 150 students submits sort.c. `npm run grade:all` grades every file in one run, with the same rules, the same tests and the same seeds, and writes one JSON and one text report per student. TAs only open the reports carrying a flag.",
+        "benefit": "Hours of manual running and checking become minutes, and two students with the same mistake always lose the same marks."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The instructor reviews those three files instead of all 300.",
+        "benefit": "Manual checking is limited to suspicious cases, and renaming or reformatting does not hide copying."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "A quicksort that always picks the first element as pivot is O(n log n) on the random arrays used for measurement, so the estimator reports O(n log n) and full marks, although it is O(n^2) on already-sorted input.",
+        "mitigation": "Measure on several input shapes (sorted, reverse, all equal) and grade the worst; the cost is longer grading time."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability depends on the model, and output checking is literal",
+        "example": "With qwen2.5-coder the agent gives a file 7/10; the same file under another model or Ollama version may get 6/10 (the cache keeps one machine reproducible, not two different setups). Separately, a program that prints \"Sum = 12\" instead of \"12\" is computed correctly but fails every test.",
+        "mitigation": "Pin the model and its version in the rules and ship the LLM cache with the grades; state the exact output format in the problem statement."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "tutor_note": {
+    "text": "Your C program received a grade of 89. Your code is mostly correct and well-structured, with a high readability score. However, there is a significant issue with the time complexity of your bubble_sort() function, which is O(n^2). This is not acceptable for large inputs, as it exceeds the required O(n log n) complexity. Additionally, your program failed the 10th test due to a time limit exceeded error, indicating that it may contain an infinite loop or an inefficient algorithm. I encourage you to optimize your sorting algorithm and ensure it can handle larger inputs within the time limit.",
+    "model": "ollama/qwen2.5-coder:7b",
+    "cached": true
+  }
+}

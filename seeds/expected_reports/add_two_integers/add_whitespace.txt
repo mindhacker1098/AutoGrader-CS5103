@@ -1,0 +1,106 @@
+===== Grading report for add_whitespace.c =====
+Problem: add_two_integers
+Overall grade: 96.0 / 100
+
+Metric         Weight Score     Contrib. Verdict
+correctness    20     18/20     18.0     9/10 tests pass. First failure: test 08 (wrong answer).
+syntax         10     10/10     10.0     Clean build under -Wall -Wextra -Werror -std=c11.
+structure      10     10/10     10.0     Functions are within the complexity, length and nesting limits; cppcheck found no defects.
+modularity     10     10/10     10.0     2 functions; main() delegates to parse_and_add.
+logical        10     10/10     10.0     3/3 edge-case categories pass; random testing: 0/100 trials disagree with the reference.
+complexity     10     10/10     10.0     O(1) measured; meets the required O(1).
+memory_safety  10     10/10     10.0     ASan and valgrind clean on 18 inputs.
+readability    10     8/10      8.0      Readability 8/10: The function `parse_and_add` uses single-letter variable names (`line`, `space`), which reduces readability.; There are no comments explaining the purpose or non-obvious logic of the function.; The code layout is cramped, with missing spaces around operators and inconsistent indentation..
+originality    10     10/10     10.0     Max similarity 0.111 (peer:add_leak.c), below the 0.85 threshold.
+
+--- Where you failed ---
+Test 08:
+        INPUT:      12	  30
+        EXPECTED: 42
+        GOT:      12
+        WHY:      Expected "42" but the program printed "12".
+
+--- Suggestions to raise the grade ---
+- Re-run the failing inputs shown in the report and compare your output with the expected one.
+- Rename variables to be more descriptive, e.g., `input_line`, `space_position`.
+- Add comments to explain the purpose of the function and key logic steps.
+- Improve layout by adding spaces around operators and consistent indentation.
+
+--- Tutor note (written by ollama/qwen2.5-coder:7b; checked against the evidence, does not affect the grade) ---
+Your C program received a grade of 96. Your code is mostly correct and
+                  passes 9 out of 10 tests. However, there is a bug in your `parse_and_add`
+                  function where it incorrectly handles input. Specifically, for the input '
+                  12 30', the program should output '42', but it outputs '12'. Keep up the
+                  good work and address this bug to improve your program.
+
+--- Usefulness & limitations of this evaluation ---
+Useful for:
+  1. Grading a large lab course unattended
+     Example: A CS5103 lab with 150 students submits sort.c. `npm run grade:all`
+              grades every file in one run, with the same rules, the same tests
+              and the same seeds, and writes one JSON and one text report per
+              student. TAs only open the reports carrying a flag.
+     Benefit: Hours of manual running and checking become minutes, and two
+              students with the same mistake always lose the same marks.
+  2. Instant feedback before the deadline
+     Example: A student uploads add.c in the web UI and is told: input
+              "2147483647 1", expected 2147483648, got -2147483648, because the
+              sanitizer reports signed integer overflow; use long long. They fix
+              it before the real submission.
+     Benefit: The student gets a concrete failing input and the reason, not just
+              'wrong answer', which is how people actually learn to debug.
+  3. Coding-interview and hiring screens
+     Example: A company gives 500 candidates the 'sort integers' task. The agent
+              ranks them by correctness, edge cases (empty input,
+              INT_MIN/INT_MAX), measured complexity and memory safety, with a
+              per-metric explanation for every score.
+     Benefit: Fast first-round filtering where every rejection can be justified
+              metric by metric.
+  4. Plagiarism and LLM-copy triage
+     Example: Two submissions reach 0.93 similarity (threshold 0.85) after
+              variables were renamed, and a third matches a solution in the LLM
+              corpus. The instructor reviews those three files instead of all
+              300.
+     Benefit: Manual checking is limited to suspicious cases, and renaming or
+              reformatting does not hide copying.
+Limits of this report:
+  1. Tests cannot prove correctness
+     Example: A program contains `if (a == 123457 && b == -9) puts("0"); else
+              printf("%lld\n", (long long)a + b);`. No hidden test, edge case or
+              random trial happens to use exactly that pair, so the agent
+              reports full correctness for a program that is wrong on one input.
+     Fix: More trials and generators that target the program's own constants
+          (read from the source) would raise the chance of hitting such
+          branches, but testing can only show the presence of bugs, never
+          their absence.
+  2. Measured complexity depends on the inputs generated
+     Example: A quicksort that always picks the first element as pivot is O(n
+              log n) on the random arrays used for measurement, so the estimator
+              reports O(n log n) and full marks, although it is O(n^2) on
+              already-sorted input.
+     Fix: Measure on several input shapes (sorted, reverse, all equal) and
+          grade the worst; the cost is longer grading time.
+  3. Similarity is unreliable for very short programs and for restyled LLM code
+     Example: Two students independently write the same 6-line add.c. Once the
+              boilerplate shared with the reference is removed, too few
+              fingerprints are left, so the agent reports 'low confidence, not
+              flagged': a genuine copy of a short program would also be missed.
+              A student who takes an LLM solution and restructures the loops
+              evades the LLM corpus.
+     Fix: Treat originality as a triage flag for a human, never as proof;
+          enlarge the LLM corpus with several models and prompts.
+  4. Readability depends on the model, and output checking is literal
+     Example: With qwen2.5-coder the agent gives a file 7/10; the same file
+              under another model or Ollama version may get 6/10 (the cache
+              keeps one machine reproducible, not two different setups).
+              Separately, a program that prints "Sum = 12" instead of "12" is
+              computed correctly but fails every test.
+     Fix: Pin the model and its version in the rules and ship the LLM cache
+          with the grades; state the exact output format in the problem
+          statement.
+
+--- Reproducibility ---
+submission sha256:79d8f4ac8820b843fd84ee5b18c5b4ec1ac500722d2f1532c5b0c30db5df670e
+rules      sha256:f53908797881124e82f6d0abd8a0a3e15e8c8d3739f086c9b021e0ec676978ce
+tests/ref  sha256:81bbe67f879487ec57d93845571352f98eeeee89a73ce27df91eda2ae4482be4
+tools      sandbox=docker; gcc=gcc (Debian 12.2.0-14+deb12u1) 12.2.0; valgrind=valgrind-3.19.0; cppcheck=Cppcheck 2.10

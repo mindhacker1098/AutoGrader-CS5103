@@ -1,0 +1,150 @@
+{
+  "summary": {
+    "n": 10,
+    "completed": 10,
+    "errors": [],
+    "wall_s": 480.1,
+    "throughput_per_min": 1.25,
+    "latency_s": {
+      "p50": 286.73,
+      "p90": 447.97,
+      "max": 480.04,
+      "mean": 301.9
+    },
+    "queue_wait_s": {
+      "p50": 93.17,
+      "p90": 326.04,
+      "max": 417.35
+    },
+    "login_429_total": 0,
+    "queue_after": {
+      "queued": 2,
+      "running": 0,
+      "done": 73,
+      "failed": 0,
+      "cancelled": 0
+    }
+  },
+  "students": [
+    {
+      "roll": "B001",
+      "problem": "add_two_integers",
+      "file": "add.c",
+      "submit_status": 201,
+      "t_submit": 0.1,
+      "t_first_event": 0.14,
+      "status": "done",
+      "t_running": 417.35,
+      "grade": 82.3,
+      "t_done": 480.04
+    },
+    {
+      "roll": "B002",
+      "problem": "add_two_integers",
+      "file": "add_crash.c",
+      "submit_status": 201,
+      "t_submit": 0.09,
+      "t_first_event": 0.14,
+      "status": "done",
+      "t_running": 93.17,
+      "grade": 37.0,
+      "t_done": 181.64
+    },
+    {
+      "roll": "B003",
+      "problem": "add_two_integers",
+      "file": "add_good.c",
+      "submit_status": 201,
+      "t_submit": 0.05,
+      "t_first_event": 0.11,
+      "status": "done",
+      "t_running": 1.03,
+      "grade": 98.0,
+      "t_done": 79.27
+    },
+    {
+      "roll": "B004",
+      "problem": "add_two_integers",
+      "file": "add_infinite_loop.c",
+      "submit_status": 201,
+      "t_submit": 0.1,
+      "t_first_event": 0.14,
+      "status": "done",
+      "t_running": 266.26,
+      "grade": 37.0,
+      "t_done": 325.87
+    },
+    {
+      "roll": "B005",
+      "problem": "add_two_integers",
+      "file": "add_injection.c",
+      "submit_status": 201,
+      "t_submit": 0.09,
+      "t_first_event": 0.13,
+      "status": "done",
+      "t_running": 286.61,
+      "grade": 80.3,
+      "t_done": 325.87
+    },
+    {
+      "roll": "B006",
+      "problem": "add_two_integers",
+      "file": "add_leak.c",
+      "submit_status": 201,
+      "t_submit": 0.09,
+      "t_first_event": 0.14,
+      "status": "done",
+      "t_running": 93.17,
+      "grade": 84.0,
+      "t_done": 207.99
+    },
+    {
+      "roll": "B007",
+      "problem": "add_two_integers",
+      "file": "add_peer_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.05,
+      "t_first_event": 0.12,
+      "status": "done",
+      "t_running": 1.04,
+      "grade": 98.0,
+      "t_done": 266.23
+    },
+    {
+      "roll": "B008",
+      "problem": "add_two_integers",
+      "file": "add_web_copy.c",
+      "submit_status": 201,
+      "t_submit": 0.1,
+      "t_first_event": 0.13,
+      "status": "done",
+      "t_running": 325.71,
+      "grade": 88.0,
+      "t_done": 417.36
+    },
+    {
+      "roll": "B009",
+      "problem": "add_two_integers",
+      "file": "add_whitespace.c",
+      "submit_status": 201,
+      "t_submit": 0.09,
+      "t_first_event": 0.13,
+      "status": "done",
+      "t_running": 79.24,
+      "grade": 85.0,
+      "t_done": 286.73
+    },
+    {
+      "roll": "B010",
+      "problem": "sort_integers",
+      "file": "sort_bubble.c",
+      "submit_status": 201,
+      "t_submit": 0.11,
+      "t_first_event": 0.14,
+      "status": "done",
+      "t_running": 326.04,
+      "grade": 84.0,
+      "t_done": 447.97
+    }
+  ]
+}

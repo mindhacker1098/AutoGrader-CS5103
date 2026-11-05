@@ -1,0 +1,659 @@
+{
+  "submission": "sort_cmp_overflow.c",
+  "problem": "sort_integers",
+  "submission_hash": "sha256:2771282c3843fecb038721b9bb77a6d6ed24d95b98d987179ff7370361a044fe",
+  "rules_hash": "sha256:01d36a520b3493a2a6f8a6b513f3d34dd9d5bc8cc69419ed1a0aae35d8901dd3",
+  "inputs_hash": "sha256v2:f4b1ed51da9ed90d202faa282ac9b2e9a2b0a4d99a5ddecb0f147bbd3d02fb43",
+  "grade": 89.5,
+  "partial": false,
+  "first_pass": {
+    "compiled": true,
+    "compile_warnings": 0,
+    "compile_errors": [],
+    "smoke_ok": true,
+    "smoke_status": "ok",
+    "suspected_infinite_loop": false,
+    "static_sanity": {
+      "hasMain": true,
+      "hasReader": true,
+      "hasWriter": true,
+      "mainHasReturn": true
+    }
+  },
+  "metrics": [
+    {
+      "name": "correctness",
+      "analyzer": "io_tests",
+      "weight": 0.25,
+      "status": "ok",
+      "score": 0.8,
+      "informational": false,
+      "contribution": 20,
+      "evidence": {
+        "tests_passed": 8,
+        "tests_total": 10,
+        "failing": [
+          {
+            "test": "06",
+            "input": "5\n2147483647 -2147483648 0 2147483646 -2147483647",
+            "expected": "-2147483648 -2147483647 0 2147483646 2147483647",
+            "got": "0 2147483646 2147483647 -2147483648 -2147483647",
+            "status": "ok",
+            "note": "runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'",
+            "why": "The sanitizer reports \"runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 -2147483647 0 2147483646 2147483647\" but the program printed \"0 2147483646 2147483647 -2147483648 -2147483647\"."
+          },
+          {
+            "test": "10",
+            "input": "50000\n2268990 772791529 -1212516549 1582789846 1563943454 -1288679461 -1342601844 -111062063 -392833029 848321931 1786272357 -1785850455 684791090 1684378495 -781694437 -1021615296 -1343709001 1090079454 -570479883 -984068017 1085560702 812946501 -713034767 240453690 272949825 -1170851678 143717179 1578190283 1200242838 486382146 -1071171698 -1611137296 -1168263543 -1752722915 -1736692015 67374988\n... (546939 more characters; full text in tests\\10.in)",
+            "expected": "-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454629 -1999308407 -1999208746 -1999097220 -1999001346 -1998868878 -1998689021 -1998681314 -1998582973 -1998524371 -1998475837 -1998422890 -1998208996 -1998161176 -1998101749 -1998068319 -1997970534 -1997927303 -1997904690 -1997894889 -1997745952 -1997573987 -1997564067 -1997445850 -1997409239 -1997405060 -1997386990 -199\n... (546933 more characters; full text in tests\\10.out)",
+            "got": "-1622548374 -1365205568 -1307348724 -1302044510 -1230740455 -1204852408 -1125128292 -1075680955 -1007128449 -999293126 -908833841 -881204893 -870934944 -865744059 -833527613 -798236981 -747846539 -740854625 -727266479 -714918660 -689821659 -682976773 -673606142 -668243147 -667253991 -657275415 -638795565 -624645920 -594528048 -591610989 -576845617 -574670586 -562890873 -557383111 -546503012 -51016\n... (546933 more characters)",
+            "status": "ok",
+            "note": "runtime error: signed integer overflow: 1563943454 - -1288679461 cannot be represented in type 'int'",
+            "why": "The sanitizer reports \"runtime error: signed integer overflow: 1563943454 - -1288679461 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454...\" but the program printed \"-1622548374 -1365205568 -1307348724 -1302044510 -1230740455 -1204852408 -1125128...\"."
+          }
+        ],
+        "max_ms": 33
+      },
+      "feedback": "8/10 tests pass. First failure: test 06 (runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int').",
+      "duration_ms": 3988
+    },
+    {
+      "name": "syntax",
+      "analyzer": "compiler_warnings",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 5,
+      "evidence": {
+        "flags": "-Wall -Wextra -std=c11",
+        "warnings": 0,
+        "warning_kinds": [],
+        "would_fail_with_Werror": false,
+        "diagnostics": []
+      },
+      "feedback": "Clean build under -Wall -Wextra -std=c11.",
+      "duration_ms": 1500
+    },
+    {
+      "name": "structure",
+      "analyzer": "static_analysis",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "thresholds": {
+          "max_cyclomatic": 10,
+          "max_function_length": 40,
+          "max_nesting": 3
+        },
+        "functions": [
+          {
+            "name": "cmp",
+            "lines": 3,
+            "cyclomatic": 1,
+            "nesting": 0
+          },
+          {
+            "name": "show",
+            "lines": 4,
+            "cyclomatic": 3,
+            "nesting": 0
+          },
+          {
+            "name": "main",
+            "lines": 11,
+            "cyclomatic": 5,
+            "nesting": 0
+          }
+        ],
+        "cppcheck": [],
+        "issues": []
+      },
+      "feedback": "Functions are within the complexity, length and nesting limits; cppcheck found no defects.",
+      "duration_ms": 1415
+    },
+    {
+      "name": "modularity",
+      "analyzer": "function_split",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "functions_defined": 3,
+        "expected_min": 3,
+        "helpers_used_by_main": [
+          "cmp",
+          "show"
+        ],
+        "helpers_never_used": [],
+        "main_lines": 11
+      },
+      "feedback": "3 functions; main() delegates to cmp, show.",
+      "duration_ms": 1
+    },
+    {
+      "name": "logical",
+      "analyzer": "edge_case_runner",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 0.667,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "categories": {
+          "empty": {
+            "passed": 1,
+            "total": 1
+          },
+          "single": {
+            "passed": 1,
+            "total": 1
+          },
+          "duplicates": {
+            "passed": 1,
+            "total": 1
+          },
+          "negatives": {
+            "passed": 1,
+            "total": 1
+          },
+          "large_values": {
+            "passed": 0,
+            "total": 1
+          },
+          "reverse": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "failing": [
+          {
+            "case": "large_values",
+            "input": "5\n2147483647 -2147483648 0 2147483646 -2147483647",
+            "expected": "-2147483648 -2147483647 0 2147483646 2147483647",
+            "got": "0 2147483646 2147483647 -2147483648 -2147483647",
+            "status": "ok",
+            "note": "runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'",
+            "why": "This input tests: INT_MAX / INT_MIN (comparator overflow). The sanitizer reports \"runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 -2147483647 0 2147483646 2147483647\" but the program printed \"0 2147483646 2147483647 -2147483648 -2147483647\"."
+          }
+        ],
+        "random": {
+          "trials": 100,
+          "seed": 11,
+          "failures": 89,
+          "counterexamples": [
+            {
+              "case": "random trial #0 (shrunk)",
+              "input": "2\n1506574438 -1803773902",
+              "expected": "-1803773902 1506574438",
+              "got": "1506574438 -1803773902",
+              "status": "ok",
+              "note": "runtime error: signed integer overflow: 1506574438 - -1803773902 cannot be represented in type 'int'",
+              "why": "The sanitizer reports \"runtime error: signed integer overflow: 1506574438 - -1803773902 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-1803773902 1506574438\" but the program printed \"1506574438 -1803773902\"."
+            },
+            {
+              "case": "random trial #1 (shrunk)",
+              "input": "2\n1375622345 -2147483648",
+              "expected": "-2147483648 1375622345",
+              "got": "1375622345 -2147483648",
+              "status": "ok",
+              "note": "runtime error: signed integer overflow: 1375622345 - -2147483648 cannot be represented in type 'int'",
+              "why": "The sanitizer reports \"runtime error: signed integer overflow: 1375622345 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 1375622345\" but the program printed \"1375622345 -2147483648\"."
+            },
+            {
+              "case": "random trial #2 (shrunk)",
+              "input": "2\n1 -2147483648",
+              "expected": "-2147483648 1",
+              "got": "1 -2147483648",
+              "status": "ok",
+              "note": "runtime error: signed integer overflow: 1 - -2147483648 cannot be represented in type 'int'",
+              "why": "The sanitizer reports \"runtime error: signed integer overflow: 1 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 1\" but the program printed \"1 -2147483648\"."
+            }
+          ]
+        }
+      },
+      "feedback": "5/6 edge-case categories pass (failed: large_values); random testing: 89/100 trials disagree with the reference.",
+      "duration_ms": 40917
+    },
+    {
+      "name": "complexity",
+      "analyzer": "complexity_estimator",
+      "weight": 0.15,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 15,
+      "evidence": {
+        "required": "O(n log n)",
+        "measured": "O(n)",
+        "method": "callgrind instruction count (deterministic)",
+        "measurements": [
+          {
+            "n": 500,
+            "instructions": 1000573
+          },
+          {
+            "n": 1000,
+            "instructions": 1908248
+          },
+          {
+            "n": 2000,
+            "instructions": 3745078
+          },
+          {
+            "n": 4000,
+            "instructions": 7468644
+          },
+          {
+            "n": 8000,
+            "instructions": 15008236
+          }
+        ],
+        "fits": [
+          {
+            "class": "O(log n)",
+            "relative_error": 0.319
+          },
+          {
+            "class": "O(n)",
+            "relative_error": 0.005
+          },
+          {
+            "class": "O(n log n)",
+            "relative_error": 0.024
+          },
+          {
+            "class": "O(n^2)",
+            "relative_error": 0.193
+          },
+          {
+            "class": "O(n^3)",
+            "relative_error": 0.29
+          }
+        ],
+        "profile_hot_functions": [
+          {
+            "function": "__vfscanf_internal",
+            "share": 0.313,
+            "user_code": false
+          },
+          {
+            "function": "__vfprintf_internal",
+            "share": 0.177,
+            "user_code": false
+          },
+          {
+            "function": "637",
+            "share": 0.127,
+            "user_code": false
+          },
+          {
+            "function": "608",
+            "share": 0.107,
+            "user_code": false
+          },
+          {
+            "function": "_itoa_word",
+            "share": 0.05,
+            "user_code": false
+          }
+        ],
+        "worst_shape": "normal",
+        "shape_results": [
+          {
+            "shape": "normal",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 1000573
+              },
+              {
+                "n": 1000,
+                "instructions": 1908248
+              },
+              {
+                "n": 2000,
+                "instructions": 3745078
+              },
+              {
+                "n": 4000,
+                "instructions": 7468644
+              },
+              {
+                "n": 8000,
+                "instructions": 15008236
+              }
+            ]
+          },
+          {
+            "shape": "sorted",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 963929
+              },
+              {
+                "n": 1000,
+                "instructions": 1825242
+              },
+              {
+                "n": 2000,
+                "instructions": 3558880
+              },
+              {
+                "n": 4000,
+                "instructions": 7046334
+              },
+              {
+                "n": 8000,
+                "instructions": 14066718
+              }
+            ]
+          },
+          {
+            "shape": "reverse",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 973884
+              },
+              {
+                "n": 1000,
+                "instructions": 1845051
+              },
+              {
+                "n": 2000,
+                "instructions": 3598319
+              },
+              {
+                "n": 4000,
+                "instructions": 7139220
+              },
+              {
+                "n": 8000,
+                "instructions": 14280578
+              }
+            ]
+          },
+          {
+            "shape": "equal",
+            "score": 1,
+            "measured": "O(n)",
+            "measurements": [
+              {
+                "n": 500,
+                "instructions": 795156
+              },
+              {
+                "n": 1000,
+                "instructions": 1486465
+              },
+              {
+                "n": 2000,
+                "instructions": 2879185
+              },
+              {
+                "n": 4000,
+                "instructions": 5685371
+              },
+              {
+                "n": 8000,
+                "instructions": 11352956
+              }
+            ]
+          }
+        ]
+      },
+      "feedback": "O(n) measured; meets the required O(n log n). Worst result across normal, sorted, reverse, equal inputs; this is an empirical estimate.",
+      "duration_ms": 24392
+    },
+    {
+      "name": "memory_safety",
+      "analyzer": "sanitizer_run",
+      "weight": 0.1,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 10,
+      "evidence": {
+        "inputs_checked": 15,
+        "valgrind": true,
+        "issues": [],
+        "undefined_behaviour_notes": [
+          {
+            "tool": "UBSan",
+            "line": 6,
+            "message": "signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'",
+            "input": "5\n2147483647 -2147483648 0 2147483646 -2147483647"
+          },
+          {
+            "tool": "UBSan",
+            "line": 6,
+            "message": "signed integer overflow: -1212516549 - 1582789846 cannot be represented in type 'int'",
+            "input": "50000\n2268990 772791529 -1212516549 1582789846 1563943454 -1288679461 -1342601844 -111062063 -392833029 848321931 1786272357 -1785850455 684791090 1684378495 -781694437 -1021615296 -1343709001 1090079"
+          }
+        ]
+      },
+      "feedback": "ASan and valgrind clean on 15 inputs. (UB noted: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int')",
+      "duration_ms": 22018
+    },
+    {
+      "name": "readability",
+      "analyzer": "llm_review",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 0.9,
+      "informational": false,
+      "contribution": 4.5,
+      "evidence": {
+        "method": "heuristic (model unavailable)",
+        "heuristic": {
+          "score": 9,
+          "reasons": [
+            "some single-letter names (a, b)"
+          ]
+        },
+        "error": "LLM calls are disabled (LLM_DISABLED); unverified historical cache entries are not used"
+      },
+      "feedback": "Readability 9/10 (heuristic): some single-letter names (a, b).",
+      "duration_ms": 1
+    },
+    {
+      "name": "originality",
+      "analyzer": "similarity_flag",
+      "weight": 0.05,
+      "status": "ok",
+      "score": 1,
+      "informational": false,
+      "contribution": 5,
+      "evidence": {
+        "comparison_count": 7,
+        "source_counts": {
+          "peer": 5,
+          "web": 1,
+          "llm": 1
+        },
+        "threshold": 0.85,
+        "distinctive_fingerprints": 17,
+        "ignored_boilerplate_fingerprints": 62,
+        "top_matches": [
+          {
+            "id": "peer:sort_bubble.c",
+            "kind": "peer",
+            "similarity": 0.588,
+            "fingerprints": 48
+          },
+          {
+            "id": "peer:sort_fixed_array.c",
+            "kind": "peer",
+            "similarity": 0.3,
+            "fingerprints": 10
+          },
+          {
+            "id": "peer:sort_leak.c",
+            "kind": "peer",
+            "similarity": 0.235,
+            "fingerprints": 27
+          },
+          {
+            "id": "llm:qwen2.5_coder_7b_seed1001.c",
+            "kind": "llm",
+            "similarity": 0.118,
+            "fingerprints": 37
+          },
+          {
+            "id": "peer:sort_good.c",
+            "kind": "peer",
+            "similarity": 0.118,
+            "fingerprints": 69
+          }
+        ],
+        "confidence": "normal",
+        "assessment": "compared"
+      },
+      "feedback": "Compared with 7 source(s). Max similarity 0.588 (peer:sort_bubble.c), below the 0.85 threshold. This comparison does not prove originality.",
+      "duration_ms": 52
+    }
+  ],
+  "flags": [],
+  "counterexamples": [
+    {
+      "source": "hidden test",
+      "test": "06",
+      "input": "5\n2147483647 -2147483648 0 2147483646 -2147483647",
+      "expected": "-2147483648 -2147483647 0 2147483646 2147483647",
+      "got": "0 2147483646 2147483647 -2147483648 -2147483647",
+      "status": "ok",
+      "note": "runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'",
+      "why": "The sanitizer reports \"runtime error: signed integer overflow: 2147483647 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 -2147483647 0 2147483646 2147483647\" but the program printed \"0 2147483646 2147483647 -2147483648 -2147483647\"."
+    },
+    {
+      "source": "hidden test",
+      "test": "10",
+      "input": "50000\n2268990 772791529 -1212516549 1582789846 1563943454 -1288679461 -1342601844 -111062063 -392833029 848321931 1786272357 -1785850455 684791090 1684378495 -781694437 -1021615296 -1343709001 1090079454 -570479883 -984068017 1085560702 812946501 -713034767 240453690 272949825 -1170851678 143717179 1578190283 1200242838 486382146 -1071171698 -1611137296 -1168263543 -1752722915 -1736692015 67374988\n... (546939 more characters; full text in tests\\10.in)",
+      "expected": "-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454629 -1999308407 -1999208746 -1999097220 -1999001346 -1998868878 -1998689021 -1998681314 -1998582973 -1998524371 -1998475837 -1998422890 -1998208996 -1998161176 -1998101749 -1998068319 -1997970534 -1997927303 -1997904690 -1997894889 -1997745952 -1997573987 -1997564067 -1997445850 -1997409239 -1997405060 -1997386990 -199\n... (546933 more characters; full text in tests\\10.out)",
+      "got": "-1622548374 -1365205568 -1307348724 -1302044510 -1230740455 -1204852408 -1125128292 -1075680955 -1007128449 -999293126 -908833841 -881204893 -870934944 -865744059 -833527613 -798236981 -747846539 -740854625 -727266479 -714918660 -689821659 -682976773 -673606142 -668243147 -667253991 -657275415 -638795565 -624645920 -594528048 -591610989 -576845617 -574670586 -562890873 -557383111 -546503012 -51016\n... (546933 more characters)",
+      "status": "ok",
+      "note": "runtime error: signed integer overflow: 1563943454 - -1288679461 cannot be represented in type 'int'",
+      "why": "The sanitizer reports \"runtime error: signed integer overflow: 1563943454 - -1288679461 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-1999829335 -1999774457 -1999748035 -1999697630 -1999540198 -1999462984 -1999454...\" but the program printed \"-1622548374 -1365205568 -1307348724 -1302044510 -1230740455 -1204852408 -1125128...\"."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #0 (shrunk)",
+      "input": "2\n1506574438 -1803773902",
+      "expected": "-1803773902 1506574438",
+      "got": "1506574438 -1803773902",
+      "status": "ok",
+      "note": "runtime error: signed integer overflow: 1506574438 - -1803773902 cannot be represented in type 'int'",
+      "why": "The sanitizer reports \"runtime error: signed integer overflow: 1506574438 - -1803773902 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-1803773902 1506574438\" but the program printed \"1506574438 -1803773902\"."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #1 (shrunk)",
+      "input": "2\n1375622345 -2147483648",
+      "expected": "-2147483648 1375622345",
+      "got": "1375622345 -2147483648",
+      "status": "ok",
+      "note": "runtime error: signed integer overflow: 1375622345 - -2147483648 cannot be represented in type 'int'",
+      "why": "The sanitizer reports \"runtime error: signed integer overflow: 1375622345 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 1375622345\" but the program printed \"1375622345 -2147483648\"."
+    },
+    {
+      "source": "generated counter-example",
+      "case": "random trial #2 (shrunk)",
+      "input": "2\n1 -2147483648",
+      "expected": "-2147483648 1",
+      "got": "1 -2147483648",
+      "status": "ok",
+      "note": "runtime error: signed integer overflow: 1 - -2147483648 cannot be represented in type 'int'",
+      "why": "The sanitizer reports \"runtime error: signed integer overflow: 1 - -2147483648 cannot be represented in type 'int'\". The result does not fit in a 32-bit int: use long long, or check the operands before computing. Expected \"-2147483648 1\" but the program printed \"1 -2147483648\"."
+    }
+  ],
+  "suggestions": [
+    "Re-run the failing inputs shown in the report and compare your output with the expected one.",
+    "Values near the int limits can overflow intermediate results; use a wider type or compare instead of subtracting.",
+    "Readability: some single-letter names (a, b)."
+  ],
+  "usefulness_limitations": {
+    "usefulness": [
+      {
+        "use_case": "Grading a large lab course unattended",
+        "example": "Students submit C programs through the web UI. The worker evaluates each against the published rules and tests and stores reports for admin review.",
+        "benefit": "Automates repeated execution and collects evidence; throughput depends on the available tools and machine."
+      },
+      {
+        "use_case": "Instant feedback before the deadline",
+        "example": "A student uploads add.c in the web UI and is told: input \"2147483647 1\", expected 2147483648, got -2147483648, because the sanitizer reports signed integer overflow; use long long. They fix it before the real submission.",
+        "benefit": "The student gets a concrete failing input and the reason, not just 'wrong answer', which is how people actually learn to debug."
+      },
+      {
+        "use_case": "Coding-interview and hiring screens",
+        "example": "A company gives 500 candidates the 'sort integers' task. The agent ranks them by correctness, edge cases (empty input, INT_MIN/INT_MAX), measured complexity and memory safety, with a per-metric explanation for every score.",
+        "benefit": "Fast first-round filtering where every rejection can be justified metric by metric."
+      },
+      {
+        "use_case": "Plagiarism and LLM-copy triage",
+        "example": "Two submissions reach 0.93 similarity (threshold 0.85) after variables were renamed, and a third matches a solution in the LLM corpus. The admin reviews those three files instead of all 300.",
+        "benefit": "Helps prioritize human review. Similarity neither proves copying nor establishes AI authorship."
+      }
+    ],
+    "limitations": [
+      {
+        "limitation": "Tests cannot prove correctness",
+        "example": "A program contains `if (a == 123457 && b == -9) puts(\"0\"); else printf(\"%lld\\n\", (long long)a + b);`. No hidden test, edge case or random trial happens to use exactly that pair, so the agent reports full correctness for a program that is wrong on one input.",
+        "mitigation": "More trials and generators that target the program's own constants (read from the source) would raise the chance of hitting such branches, but testing can only show the presence of bugs, never their absence."
+      },
+      {
+        "limitation": "Measured complexity depends on the inputs generated",
+        "example": "An algorithm can behave well on the normal, sorted, reverse and equal-value samples yet be slow on a different adversarial arrangement or at larger sizes.",
+        "mitigation": "The array estimator takes the worst observed shape. Review the selected sizes; empirical measurements do not prove a worst-case complexity bound."
+      },
+      {
+        "limitation": "Similarity is unreliable for very short programs and for restyled LLM code",
+        "example": "Two students independently write the same 6-line add.c. Once the boilerplate shared with the reference is removed, too few fingerprints are left, so the agent reports 'low confidence, not flagged': a genuine copy of a short program would also be missed. A student who takes an LLM solution and restructures the loops evades the LLM corpus.",
+        "mitigation": "Treat originality as a triage flag for a human, never as proof; enlarge the LLM corpus with several models and prompts."
+      },
+      {
+        "limitation": "Readability rules are heuristic, and output checking is literal",
+        "example": "A fixed rubric can penalize a concise program for missing comments even if a teacher finds it clear. Printing \"Sum = 12\" instead of the specified \"12\" also fails an output test.",
+        "mitigation": "Inspect the rubric and use admin overrides when justified. AI advice never changes the readability score. State the exact output format in the question."
+      }
+    ]
+  },
+  "tool_versions": {
+    "sandbox": "docker",
+    "gcc": "gcc (Debian 12.2.0-14+deb12u1) 12.2.0",
+    "valgrind": "valgrind-3.19.0",
+    "cppcheck": "Cppcheck 2.10"
+  },
+  "corpus_hash": "sha256:0961f2f9b62d04b23a29cae12d8634f42a7cb875abd6d1b1bcf40623451221f3",
+  "model_digests": null,
+  "pre_analysis": {
+    "denylist": [],
+    "sandbox": "docker",
+    "policy": "flag",
+    "blocked": false,
+    "llm": null,
+    "verified": null,
+    "complexity": null
+  },
+  "provisional": true,
+  "environment": {
+    "sandbox": "docker",
+    "valgrind": true,
+    "llm_review": "heuristic (model unavailable)"
+  },
+  "provisional_reasons": [
+    "readability: the model was unavailable, heuristic used"
+  ]
+}

@@ -1,0 +1,36 @@
+name: autograder-improved
+services:
+  app:
+    image: autograder-improved:2.0.0
+    pull_policy: never
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${AUTOGRADER_PORT:-8020}:8020"
+    environment:
+      DATA_DIR: /data
+      DATABASE_URL: ""
+      SANDBOX: docker
+      SANDBOX_IMAGE: autograder-improved-sandbox:2.0.0
+      LLM_CACHE_DIR: /data/cache/llm
+      LLM_DISABLED: "${LLM_DISABLED:-true}"
+      OLLAMA_HOST: "${OLLAMA_HOST:-http://ollama:11434}"
+      MODEL_PRE: qwen2.5-coder:7b
+      MODEL_REVIEW: qwen2.5-coder:7b
+      MODEL_EXPLAIN: qwen2.5-coder:7b
+      WORKER_JOBS: "${WORKER_JOBS:-2}"
+      MAX_SANDBOXES: "${MAX_SANDBOXES:-3}"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - autograder-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    stop_grace_period: 60s
+  ollama:
+    image: ollama/ollama@sha256:ebaef4f4c5d93660e1f25f8ad085a112f51ccfb0e8458073e71793959dba91c9
+    profiles: [ai]
+    restart: unless-stopped
+    volumes:
+      - ollama-models:/root/.ollama
+volumes:
+  autograder-data:
+  ollama-models:

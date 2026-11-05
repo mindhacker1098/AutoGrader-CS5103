@@ -1,0 +1,321 @@
+[
+ {
+  "sizes": [
+   1,
+   10,
+   100
+  ],
+  "costs": [
+   1000,
+   1005,
+   1010
+  ],
+  "result": {
+   "best": "O(1)",
+   "fits": []
+  }
+ },
+ {
+  "sizes": [
+   1,
+   10,
+   100
+  ],
+  "costs": [
+   1000,
+   2000,
+   50000
+  ],
+  "result": {
+   "best": "O(n^2)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0.509
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.083
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.033
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.012
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.022
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   167867,
+   370734,
+   813468,
+   1772936,
+   3839872
+  ],
+  "result": {
+   "best": "O(n log n)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0.375
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.032
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.187
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.295
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   2500500,
+   10000500,
+   40000500,
+   160000500,
+   640000500
+  ],
+  "result": {
+   "best": "O(n^2)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0.78
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.319
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.274
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.167
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   150017,
+   300017,
+   600017,
+   1200017,
+   2400017
+  ],
+  "result": {
+   "best": "O(n)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0.316
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.029
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.198
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.296
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   49500,
+   49000,
+   48000,
+   46000,
+   42000
+  ],
+  "result": {
+   "best": "O(1)",
+   "fits": []
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   100000,
+   150000,
+   210000,
+   600000,
+   900000
+  ],
+  "result": {
+   "best": "O(n)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0.275
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.147
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.161
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.286
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.37
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   125000000,
+   1000000000,
+   8000000000,
+   64000000000,
+   512000000000
+  ],
+  "result": {
+   "best": "O(n^3)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 1.079
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.571
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.52
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.201
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0
+    }
+   ]
+  }
+ },
+ {
+  "sizes": [
+   500,
+   1000,
+   2000,
+   4000,
+   8000
+  ],
+  "costs": [
+   1358.6313713864834,
+   1398.6313713864834,
+   1438.6313713864834,
+   1478.6313713864834,
+   1518.6313713864834
+  ],
+  "result": {
+   "best": "O(log n)",
+   "fits": [
+    {
+     "class": "O(log n)",
+     "relative_error": 0
+    },
+    {
+     "class": "O(n)",
+     "relative_error": 0.014
+    },
+    {
+     "class": "O(n log n)",
+     "relative_error": 0.015
+    },
+    {
+     "class": "O(n^2)",
+     "relative_error": 0.022
+    },
+    {
+     "class": "O(n^3)",
+     "relative_error": 0.025
+    }
+   ]
+  }
+ }
+]
